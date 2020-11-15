@@ -1,6 +1,6 @@
 <!--- Badges --->
 ![GitHub contributors](https://img.shields.io/github/contributors/thecesrom/Ignition)
-![GitHub last commit (master)](https://img.shields.io/github/last-commit/thecesrom/Ignition/main)
+![GitHub last commit (master)](https://img.shields.io/github/last-commit/thecesrom/Ignition/8.0)
 ![GitHub license](https://img.shields.io/github/license/thecesrom/Ignition)
 
 # Ignition
@@ -11,7 +11,7 @@ Ignition is a set of packages and modules that allows developers to get code com
 
 Before you begin, ensure you have met the following requirements:
 * You have installed Python 2.7.18 ([download here](https://www.python.org/downloads/release/python-2718/))
-* You are familiar with [Ignition 8 Scripting Functions](https://docs.inductiveautomation.com/display/DOC81/Scripting+Functions)
+* You are familiar with [Ignition 8.0 Scripting Functions](https://docs.inductiveautomation.com/display/DOC80/Scripting+Functions)
 
 ## Using Ignition
 
