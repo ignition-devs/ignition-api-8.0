@@ -2,6 +2,8 @@
 ![GitHub contributors](https://img.shields.io/github/contributors/thecesrom/Ignition)
 ![GitHub last commit (8.0)](https://img.shields.io/github/last-commit/thecesrom/Ignition/8.0)
 ![GitHub license](https://img.shields.io/github/license/thecesrom/Ignition)
+[![time tracker](https://wakatime.com/badge/github/thecesrom/Ignition.svg)](https://wakatime.com/badge/github/thecesrom/Ignition)
+[![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
 
 # Ignition
 
