@@ -1,7 +1,10 @@
 # Copyright (C) 2018-2021
 # Author: Cesar Roman
 # Contact: cesar@thecesrom.dev
-"""Roster Functions
+
+"""
+Roster Functions
+
 Functions that provide roster manipulation, including adding and remove
 users from a roster.
 """
@@ -12,7 +15,8 @@ from system.user import PyUser
 
 
 def addUsers(rosterName, users):
-    """Adds a list of users to an existing roster. Users are always
+    """
+    Adds a list of users to an existing roster. Users are always
     appended to the end of the roster.
 
     Args:
@@ -28,8 +32,9 @@ def addUsers(rosterName, users):
 
 
 def createRoster(name, description):
-    """Creates a roster with the given name and description, if it does
-    not already exist.
+    """
+    Creates a roster with the given name and description, if it does not
+    already exist.
 
     This function was designed to run in the Gateway and in Perspective
     sessions. If creating rosters from Vision clients, use
@@ -44,7 +49,8 @@ def createRoster(name, description):
 
 
 def getRosters():
-    """Returns a dictionary of rosters, where the key is the name of the
+    """
+    Returns a dictionary of rosters, where the key is the name of the
     roster, and the value is an array list of string user names.
 
     This function was designed to run in the Gateway and in Perspective
@@ -59,7 +65,8 @@ def getRosters():
 
 
 def removeUsers(rosterName, users):
-    """Removes one or more users from an existing roster.
+    """
+    Removes one or more users from an existing roster.
 
     Args:
         rosterName (str): The name of the roster to modify.

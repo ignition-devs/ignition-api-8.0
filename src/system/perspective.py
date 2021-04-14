@@ -1,7 +1,10 @@
 # Copyright (C) 2018-2021
 # Author: Cesar Roman
 # Contact: cesar@thecesrom.dev
-"""Perspective Functions
+
+"""
+Perspective Functions
+
 The following functions offer various ways to interact with a
 Perspective session from a Python script.
 """
@@ -105,7 +108,8 @@ def alterLogging(
     sessionId="current_session",
     pageId="current_page",
 ):
-    """Changes Perspective Session logging attributes and levels. All
+    """
+    Changes Perspective Session logging attributes and levels. All
     parameters are optional, with the caveat that at least one of them
     needs to be used.
 
@@ -133,7 +137,8 @@ def alterLogging(
 
 
 def closeDock(id, sessionId=None, pageId=None):
-    """Closes a docked view.
+    """
+    Closes a docked view.
 
     Args:
         id (str): The unique, preconfigured 'Dock ID' for the docked
@@ -154,7 +159,8 @@ def closeDock(id, sessionId=None, pageId=None):
 def closePage(
     message=None, sessionId="current_session", pageID="current_page"
 ):
-    """Closes the page with the given page id or the current page if no
+    """
+    Closes the page with the given page id or the current page if no
     page id is provided. If a message is provided, it is displayed on
     the page when the page closes. Otherwise the default message (set in
     the Project Properties) is displayed.
@@ -176,7 +182,8 @@ def closePage(
 
 
 def closePopup(id, sessionId="current_session", pageId="current_page"):
-    """Closes a popup View.
+    """
+    Closes a popup View.
 
     Args:
         id (str): The unique identifier for the the popup, given to the
@@ -195,7 +202,8 @@ def closePopup(id, sessionId="current_session", pageId="current_page"):
 
 
 def closeSession(message=None, sessionId="current_session"):
-    """Closes the Perspective Session with the given session ID or the
+    """
+    Closes the Perspective Session with the given session ID or the
     current session if no ID is provided. If a message is provided, it
     is displayed on the page when the session closes. Otherwise the
     default message (set in the Project Properties) is displayed.
@@ -219,7 +227,8 @@ def download(
     sessionId="current_session",
     pageId="current_page",
 ):
-    """Downloads data from the gateway to a device running a session.
+    """
+    Downloads data from the gateway to a device running a session.
 
     Args:
         filename (str): Suggested name for the downloaded file.
@@ -241,7 +250,8 @@ def download(
 
 
 def getSessionInfo(usernameFilter=None, projectFilter=None):
-    """Returns information about one or more Perspective sessions. The
+    """
+    Returns information about one or more Perspective sessions. The
     information returned by this function is a combination of
     information available on the perspective sessions status page on the
     Gateway, and some session props (id and userAgent).
@@ -263,7 +273,8 @@ def getSessionInfo(usernameFilter=None, projectFilter=None):
 
 
 def isAuthorized(isAllOf, securityLevels):
-    """Checks if the user in the current session is authorized against a
+    """
+    Checks if the user in the current session is authorized against a
     target collection of security levels.
 
     Args:
@@ -287,7 +298,8 @@ def isAuthorized(isAllOf, securityLevels):
 
 
 def login(sessionId="current_session", pageId="current_page", forceAuth=False):
-    """Triggers a login event that will allow the user to login with the
+    """
+    Triggers a login event that will allow the user to login with the
     project's configured Identity Provider (IdP). For this function to
     work, an Identity Provider must be set in Perspective project
     properties. This is particularly useful when you want it to be
@@ -321,7 +333,8 @@ def login(sessionId="current_session", pageId="current_page", forceAuth=False):
 
 
 def logout(sessionId="current_session", pageId="current_page"):
-    """Triggers a logout event, which will log the user out. For this
+    """
+    Triggers a logout event, which will log the user out. For this
     function to work, an Identity Provider must be set in the
     Perspective project properties.
 
@@ -346,7 +359,8 @@ def navigate(
     sessionId="current_session",
     pageId="current_page",
 ):
-    """Navigate the session to a specified view or mounted page.
+    """
+    Navigate the session to a specified view or mounted page.
 
     The function can be used in three different ways, depending on which
     parameter is specified:
@@ -388,7 +402,8 @@ def navigate(
 def openDock(
     id, sessionId="current_session", pageId="current_page", params=None
 ):
-    """Opens a docked View. Requires the preconfigured dock ID for the
+    """
+    Opens a docked View. Requires the preconfigured dock ID for the
     view.
 
     Args:
@@ -423,7 +438,8 @@ def openPopup(
     sessionId="current_session",
     pageId="current_page",
 ):
-    """Open a popup view over the given page.
+    """
+    Open a popup view over the given page.
 
     Args:
         id (str): A unique popup string. Will be used to close the popup
@@ -481,7 +497,8 @@ def print(
     pageId="current_page",
     destination="client",
 ):
-    """Sends print statements to the scripting console when in the
+    """
+    Sends print statements to the scripting console when in the
     Designer. When in a Session, sends print statements to the output
     console. This function makes scripting diagnostics easier.
 
@@ -504,7 +521,8 @@ def print(
 
 
 def refresh(sessionId="current_session", pageId="current_page"):
-    """Triggers a refresh of the page.
+    """
+    Triggers a refresh of the page.
 
     Args:
         sessionId (str): Identifier of the Session to target. If
@@ -526,7 +544,8 @@ def sendMessage(
     sessionId="current_session",
     pageId="current_page",
 ):
-    """Send a message to a message handler within the same session.
+    """
+    Send a message to a message handler within the same session.
 
     Args:
         messageType (str): The message type that will be invoked.
@@ -550,7 +569,8 @@ def sendMessage(
 
 
 def setTheme(name, sessionId="current_session", pageId="current_page"):
-    """Changes the theme in a page to the specified theme.
+    """
+    Changes the theme in a page to the specified theme.
 
     Note that this function only changes the theme for a single page,
     not the entire session. To change the theme for a session, write
@@ -574,7 +594,8 @@ def setTheme(name, sessionId="current_session", pageId="current_page"):
 def toggleDock(
     id, sessionId="current_session", pageId="current_page", params=None
 ):
-    """Toggles a docked View.
+    """
+    Toggles a docked View.
 
     Args:
         id (str): The unique, preconfigured 'Dock ID' for the docked
@@ -608,7 +629,8 @@ def togglePopup(
     sessionId="current_session",
     pageId="current_page",
 ):
-    """Toggles a popup. Will open up the popup if it has not been opened
+    """
+    Toggles a popup. Will open up the popup if it has not been opened
     yet. Otherwise, it will close the currently opened popup.
 
     Args:
@@ -662,8 +684,9 @@ def togglePopup(
 
 
 def vibrateDevice(duration, sessionId="current_session"):
-    """When called from the Perspective mobile app, will cause the
-    device to vibrate for the specified number of milliseconds.
+    """
+    When called from the Perspective mobile app, will cause the device
+    to vibrate for the specified number of milliseconds.
 
     Args:
         duration (int): The duration in milliseconds to vibrate the
