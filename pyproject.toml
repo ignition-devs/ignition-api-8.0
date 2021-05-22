@@ -1,6 +1,6 @@
 [tool.black]
 line-length = 79
-target-version = ["py27"]
+target-version = ['py27']
 
 [tool.isort]
 profile = "black"
@@ -9,4 +9,4 @@ py_version = 27
 
 [tool.pydocstyle]
 convention = "google"
-add_ignore = ["D205", "D209", "D415"]
+add_ignore = ["D205", "D415"]
