@@ -1,4 +1,5 @@
 # Ignition
+
 <!--- Badges --->
 ![GitHub last commit (8.0)](https://img.shields.io/github/last-commit/thecesrom/Ignition/8.0)
 [![GitHub contributors](https://img.shields.io/github/contributors/thecesrom/Ignition)](https://github.com/thecesrom/Ignition/graphs/contributors)
@@ -22,6 +23,7 @@ If you can't find it, feel free to submit your request on our [Discussions](http
 ## Prerequisites
 
 Before you begin, ensure you have met the following requirements:
+
 * You have installed Python 2.7.18 ([download here](https://www.python.org/downloads/release/python-2718/))
 * You are familiar with [Ignition 8.0 Scripting Functions](https://docs.inductiveautomation.com/display/DOC80/Scripting+Functions)
 
@@ -59,14 +61,13 @@ Alternatively see the GitHub documentation on [creating a pull request](https://
 
 ## Contributors
 
-Thanks to the everyone who has contributed to this project.
+Thanks to everyone who has contributed to this project.
 
 Up-to-date list of contributors can be found [here](https://github.com/thecesrom/Ignition/graphs/contributors).
 
 ## License
 
 See the [LICENSE](https://github.com/thecesrom/Ignition/blob/master/LICENSE).
-
 
 ## Code of conduct
 
