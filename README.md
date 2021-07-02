@@ -67,7 +67,7 @@ Up-to-date list of contributors can be found [here](https://github.com/thecesrom
 
 ## License
 
-See the [LICENSE](https://github.com/thecesrom/Ignition/blob/master/LICENSE).
+See the [LICENSE](https://github.com/thecesrom/Ignition/blob/HEAD/LICENSE).
 
 ## Code of conduct
 
