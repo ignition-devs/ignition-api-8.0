@@ -69,7 +69,7 @@ def addDays(date, value):
             value is negative.
 
     Returns:
-        datetime: A new date object offset by the integer passed to the
+        Date: A new date object offset by the integer passed to the
             function.
     """
     return date + timedelta(days=value)
@@ -84,7 +84,7 @@ def addHours(date, value):
             value is negative.
 
     Returns:
-        datetime: A new date object offset by the integer passed to the
+        Date: A new date object offset by the integer passed to the
             function.
     """
     return date + timedelta(hours=value)
@@ -100,7 +100,7 @@ def addMillis(date, value):
             value is negative.
 
     Returns:
-        datetime: A new date object offset by the integer passed to the
+        Date: A new date object offset by the integer passed to the
             function.
     """
     return date + timedelta(milliseconds=value)
@@ -115,7 +115,7 @@ def addMinutes(date, value):
             value is negative.
 
     Returns:
-        datetime: A new date object offset by the integer passed to the
+        Date: A new date object offset by the integer passed to the
             function.
     """
     return date + timedelta(minutes=value)
@@ -136,7 +136,7 @@ def addMonths(date, value):
             value is negative.
 
     Returns:
-        datetime: A new date object offset by the integer passed to the
+        Date: A new date object offset by the integer passed to the
             function.
     """
     import calendar
@@ -158,7 +158,7 @@ def addSeconds(date, value):
             value is negative.
 
     Returns:
-        datetime: A new date object offset by the integer passed to the
+        Date: A new date object offset by the integer passed to the
             function.
     """
     return date + timedelta(seconds=value)
@@ -173,7 +173,7 @@ def addWeeks(date, value):
             value is negative.
 
     Returns:
-        datetime: A new date object offset by the integer passed to the
+        Date: A new date object offset by the integer passed to the
             function.
     """
     return date + timedelta(weeks=value)
@@ -188,7 +188,7 @@ def addYears(date, value):
             value is negative.
 
     Returns:
-        datetime: A new date object offset by the integer passed to the
+        Date: A new date object offset by the integer passed to the
             function.
     """
     return date.replace(year=date.year + value)
@@ -253,7 +253,7 @@ def fromMillis(millis):
             January 1, 1970, 00:00:00 UTC (GMT).
 
     Returns:
-        datetime: A new date object.
+        Date: A new date object.
     """
     s = millis // 1000
     micro = (millis % 1000) * 1000
@@ -286,7 +286,7 @@ def getDate(year, month, day):
             of the month is day 1.
 
     Returns:
-        datetime: A new date, set to midnight of that day.
+        Date: A new date, set to midnight of that day.
     """
     _jan = datetime(year, 1, day)
     return addMonths(_jan, month)
@@ -451,7 +451,7 @@ def getTimezoneRawOffset():
     Returns:
          float: The timezone offset.
     """
-    offset = -1.0 if isDaylightTime(now()) else 0.0
+    offset = -1.0 if isDaylightTime() else 0.0
     return float(hoursBetween(datetime.utcnow(), datetime.now())) + offset
 
 
@@ -565,7 +565,7 @@ def midnight(date):
         date (Date): The starting date.
 
     Returns:
-        datetime: A new date, set to midnight of the day provided.
+        Date: A new date, set to midnight of the day provided.
     """
     return date.replace(hour=0, minute=0, second=0, microsecond=0)
 
@@ -633,7 +633,7 @@ def now():
     according to the local system clock.
 
     Returns:
-        datetime: A new date, set to the current date and time.
+        Date: A new date, set to the current date and time.
     """
     return datetime.now()
 
@@ -655,7 +655,7 @@ def parse(
             Default is 'Locale.English'. Optional.
 
     Returns:
-        datetime: The parsed date.
+        Date: The parsed date.
     """
     print(dateString, formatString, locale)
     return now()
@@ -688,7 +688,7 @@ def setTime(date, hour, minute, second):
         second (int): The seconds (0-59) to set.
 
     Returns:
-        datetime: A new date, set to the appropriate time.
+        Date: A new date, set to the appropriate time.
     """
     return date.replace(hour=hour, minute=minute, second=second, microsecond=0)
 
