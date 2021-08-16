@@ -526,7 +526,6 @@ def runNamedQuery(*args):
             returned by a Scalar Query.
     """
     print(args)
-    return None
 
 
 def runPrepQuery(query, args, database="", tx=None):
@@ -660,7 +659,6 @@ def runScalarPrepQuery(query, args, database="", tx=None):
             results. Returns None if no rows were returned.
     """
     print(query, args, database, tx)
-    return None
 
 
 def runScalarQuery(query, database, tx):
@@ -684,7 +682,6 @@ def runScalarQuery(query, database, tx):
             results. Returns None if no rows were returned.
     """
     print(query, database, tx)
-    return None
 
 
 def runSFNamedQuery(*args):

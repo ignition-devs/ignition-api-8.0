@@ -31,6 +31,8 @@ __all__ = [
     "variance",
 ]
 
+import __builtin__ as builtins
+
 from java.lang import Exception as JException
 
 
@@ -86,7 +88,6 @@ def kurtosis(values):
             4 values.
     """
     print(values)
-    return None
 
 
 def max(values):
@@ -105,9 +106,7 @@ def max(values):
         float: The maximum value contained in the 'values' parameter, or
             nan if the input was empty or null.
     """
-    from __builtin__ import max
-
-    return max(values)
+    return builtins.max(values)
 
 
 def mean(values):
@@ -129,7 +128,6 @@ def mean(values):
             nan if the input was empty or null.
     """
     print(values)
-    return None
 
 
 def meanDifference(values1, values2):
@@ -159,7 +157,6 @@ def meanDifference(values1, values2):
     """
     if len(values1) != len(values2):
         raise DimensionMismatchException()
-    return None
 
 
 def median(values):
@@ -179,7 +176,6 @@ def median(values):
         float: The median, or nan if the input was empty or null.
     """
     print(values)
-    return None
 
 
 def min(values):
@@ -198,9 +194,7 @@ def min(values):
         float: The minimum value contained within the 'values'
             parameter, or nan if the input was empty or null.
     """
-    from __builtin__ import min
-
-    return min(values)
+    return builtins.min(values)
 
 
 def mode(values):
@@ -221,7 +215,6 @@ def mode(values):
             an empty list will be returned instead.
     """
     print(values)
-    return None
 
 
 def normalize(values):
@@ -248,7 +241,6 @@ def normalize(values):
             0, will return an array of float nan (Not a Number).
     """
     print(values)
-    return None
 
 
 def percentile(values, percentile):
@@ -274,7 +266,6 @@ def percentile(values, percentile):
             nan if the input was empty or null.
     """
     print(values, percentile)
-    return None
 
 
 def populationVariance(values):
@@ -296,7 +287,6 @@ def populationVariance(values):
             null.
     """
     print(values)
-    return None
 
 
 def product(values):
@@ -317,7 +307,6 @@ def product(values):
             nan if the input was empty or null.
     """
     print(values)
-    return None
 
 
 def skewness(values):
@@ -341,7 +330,6 @@ def skewness(values):
             was empty or null.
     """
     print(values)
-    return None
 
 
 def standardDeviation(values):
@@ -364,7 +352,6 @@ def standardDeviation(values):
             if the values was empty or null.
     """
     print(values)
-    return None
 
 
 def sum(values):
@@ -384,9 +371,7 @@ def sum(values):
         float: The sum of all values in the 'values' parameter, or nan
             if values was empty or null.
     """
-    from __builtin__ import sum
-
-    return sum(values)
+    return builtins.sum(values)
 
 
 def sumDifference(values1, values2):
@@ -415,7 +400,6 @@ def sumDifference(values1, values2):
     """
     if len(values1) != len(values2):
         raise DimensionMismatchException()
-    return None
 
 
 def sumLog(values):
@@ -435,7 +419,6 @@ def sumLog(values):
             if the input was empty, None, or contains negative numbers.
     """
     print(values)
-    return None
 
 
 def sumSquares(values):
@@ -457,9 +440,7 @@ def sumSquares(values):
         float: The sum of all squares of the 'values' parameter, or nan
             if the input was empty or null.
     """
-    from __builtin__ import sum
-
-    return sum(value ** 2 for value in values)
+    return builtins.sum(value ** 2 for value in values)
 
 
 def variance(values):
@@ -482,4 +463,3 @@ def variance(values):
             if the input was empty or null.
     """
     print(values)
-    return None

@@ -352,7 +352,7 @@ def getScreens():
         list[tuple]: A sequence of tuples of the form (index, width,
             height) for each screen device (monitor) available.
     """
-    return None
+    return [(0, 1024, 768), (1, 3840, 2160)]
 
 
 def getSibling(event, name):
@@ -419,7 +419,6 @@ def inputBox(message, defaultText=None):
         str: The string value that was entered in the input box.
     """
     print(message, defaultText)
-    return None
 
 
 def isTouchscreenModeEnabled():
@@ -647,7 +646,6 @@ def transform(
         acceleration,
         coordSpace,
     )
-    return None
 
 
 def warningBox(message, title="Warning"):

@@ -49,8 +49,8 @@ def executeAndDistribute(
     """
     if project is None:
         raise IllegalArgumentException()
-    else:
-        print(path, project, parameters, action, actionSettings)
+
+    print(path, project, parameters, action, actionSettings)
 
 
 def executeReport(path, project="project", parameters=None, fileType="pdf"):
@@ -74,11 +74,20 @@ def executeReport(path, project="project", parameters=None, fileType="pdf"):
             occurs: If the file type is not recognized, path does not
             exist, project does not exist.
     """
-    _fileTypes = ["pdf", "html", "csv", "rtf", "jpeg", "png", "xml"]
+    _fileTypes = [
+        "csv",
+        "html",
+        "jpeg",
+        "pdf",
+        "png",
+        "rtf",
+        "xls",
+        "xlsx",
+        "xml",
+    ]
     if path is None or project is None or fileType not in _fileTypes:
         raise IllegalArgumentException()
     print(path, project, parameters, fileType)
-    return None
 
 
 def getReportNamesAsDataset(project="project"):
@@ -102,8 +111,8 @@ def getReportNamesAsDataset(project="project"):
     """
     if project is None:
         raise IllegalArgumentException()
-    else:
-        return Dataset()
+
+    return Dataset()
 
 
 def getReportNamesAsList(project="project"):
@@ -124,5 +133,5 @@ def getReportNamesAsList(project="project"):
     """
     if project is None:
         raise IllegalArgumentException()
-    else:
-        return []
+
+    return []

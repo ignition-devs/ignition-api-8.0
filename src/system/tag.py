@@ -166,31 +166,38 @@ class QualityCode(Object):
         pass
 
     def isBad(self):
+        print(self)
         return False
 
     def isBadOrError(self):
+        print(self)
         return False
 
     def isError(self):
+        print(self)
         return False
 
     def isGood(self):
+        print(self)
         return True
 
     def isNot(self, arg):
+        print(self, arg)
         return True
 
     def isNotGood(self):
+        print(self)
         return False
 
     def isUncertain(self):
+        print(self)
         return False
 
     def toValue(self):
         pass
 
     @staticmethod
-    def values(self):
+    def values():
         pass
 
     @staticmethod
@@ -542,7 +549,6 @@ def getConfiguration(basePath, recursive=False):
             list marked as "tags" in the dictionary.
     """
     print(basePath, recursive)
-    return None
 
 
 def importTags(filePath, basePath, collisionPolicy="o"):
@@ -841,7 +847,6 @@ def queryTagHistory(
         ignoreBadQuality,
         timeout,
     )
-    return None
 
 
 def read(tagPath):
