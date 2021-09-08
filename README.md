@@ -27,10 +27,6 @@ Before you begin, ensure you have met the following requirements:
 * You have installed Python 2.7.18 ([download here](https://www.python.org/downloads/release/python-2718/))
 * You are familiar with [Ignition 8.0 Scripting Functions](https://docs.inductiveautomation.com/display/DOC80/Scripting+Functions)
 
-## Using Ignition
-
-To use Ignition, download the code targeted to your desired version from the [releases page](https://github.com/thecesrom/Ignition/releases) and add it as a dependency to your scripting project.
-
 ## Packages
 
 Ignition consists of the following packages:
@@ -45,6 +41,39 @@ These are libraries for some Java packages and functions that are imported in `s
 ### system
 
 Is a package that includes all Ignition Scripting Functions.
+
+## Installation and usage
+
+To use Ignition, download the code targeted to your desired version from the [releases page](https://github.com/thecesrom/Ignition/releases) and add it as a dependency to your scripting project.
+
+Also, it can be installed by running `pip`. It requires Python 2.7 (we recommend version 2.7.18).
+
+```bash
+$ python2 -m pip install ignition-api==8.0.17
+```
+
+This will install it as package to your Python installation, which will allow you to call Ignition Scripting functions from Python's REPL, and get code completion using and IDE (we recommend PyCharm).
+
+```bash
+Python 2.7.18 (default, Nov  9 2020, 16:23:15) 
+[GCC Apple LLVM 12.0.0 (clang-1200.0.32.21)] on darwin
+Type "help", "copyright", "credits" or "license" for more information.
+>>> from __future__ import print_function
+>>> import system.util
+>>> print(system.util.__doc__)
+Utility Functions.
+
+The following functions give you access to view various Gateway and
+Client data, as well as interact with other various systems.
+
+>>> system.util.beep()
+>>> quit()
+```
+
+And to uninstall:
+```bash
+$ python2 -m pip uninstall ignition-api
+```
 
 ## Contributing to Ignition
 
