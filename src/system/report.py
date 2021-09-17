@@ -1,7 +1,3 @@
-# Copyright (C) 2018-2021
-# Author: Cesar Roman
-# Contact: cesar@thecesrom.dev
-
 """Report Functions.
 
 The following functions give you access to report details and the
@@ -17,8 +13,8 @@ __all__ = [
     "getReportNamesAsList",
 ]
 
+from com.inductiveautomation.ignition.common import Dataset
 from java.lang import IllegalArgumentException
-from system.dataset import Dataset
 
 
 def executeAndDistribute(

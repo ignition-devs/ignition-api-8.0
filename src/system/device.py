@@ -1,7 +1,3 @@
-# Copyright (C) 2018-2021
-# Author: Cesar Roman
-# Contact: cesar@thecesrom.dev
-
 """Device Functions.
 
 The following functions give you access to view and edit device
@@ -19,7 +15,7 @@ __all__ = [
     "setDeviceHostname",
 ]
 
-from system.dataset import Dataset
+from com.inductiveautomation.ignition.common import Dataset
 
 
 def addDevice(deviceType, deviceName, deviceProps):

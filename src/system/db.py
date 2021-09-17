@@ -1,7 +1,3 @@
-# Copyright (C) 2018-2021
-# Author: Cesar Roman
-# Contact: cesar@thecesrom.dev
-
 """Database Functions.
 
 The following functions give you access to view and modify data in the
@@ -41,9 +37,12 @@ __all__ = [
     "setDatasourceMaxConnections",
 ]
 
-from java.lang import Object
+from com.inductiveautomation.ignition.common import Dataset
+from com.inductiveautomation.ignition.common.script.builtin import (
+    DatasetUtilities,
+    SProcCall,
+)
 from javax.swing import JComponent
-from system.dataset import Dataset, PyDataSet
 
 # Type codes
 # These are codes defined by the JDBC specification.
@@ -92,88 +91,6 @@ READ_COMMITTED = 2
 READ_UNCOMMITTED = 1
 REPEATABLE_READ = 4
 SERIALIZABLE = 8
-
-
-class SProcCall(Object):
-    def __init__(self):
-        pass
-
-    def getResultSet(self):
-        """Returns a dataset that is the resulting data of the stored
-        procedure, if any.
-
-        Returns:
-            Dataset: The dataset that is the resulting data of the
-                stored procedure, if any.
-        """
-        print(self)
-        return Dataset()
-
-    def getUpdateCount(self):
-        """Returns the number of rows modified by the stored procedure,
-        or -1 if not applicable.
-
-        Returns:
-             int: The number of rows modified by the stored procedure,
-                or -1 if not applicable.
-        """
-        print(self)
-        return 1
-
-    def getReturnValue(self):
-        """Returns the return value, if registerReturnParam had been
-        called.
-
-        Returns:
-             int: The return value, if registerReturnParam had been
-                called.
-        """
-        print(self)
-        return 0
-
-    def getOutParamValue(self, param):
-        """Returns the value of the previously registered out-parameter.
-
-        Args:
-            param (object): Index (int) or name (str) of the previously
-                registered out-parameter.
-
-        Returns:
-            object: The value of the previously registered
-                out-parameter.
-        """
-        print(self, param)
-        return 0
-
-    def registerInParam(self, param, typeCode, value):
-        """Registers an in parameter for the stored procedure.
-
-        Args:
-            param (object): Index (int starting at 1, not 0), or name
-                (str).
-            typeCode (int): Type code constant.
-            value (object): Value of type typeCode.
-        """
-        print(self, param, typeCode, value)
-
-    def registerOutParam(self, param, typeCode):
-        """Registers an out parameter for the stored procedure.
-
-        Args:
-            param (object): Index (int starting at 1, not 0), or name
-                (str).
-            typeCode (int): Type code constant.
-        """
-        print(self, param, typeCode)
-
-    def registerReturnParam(self, typeCode):
-        """Use this function to specify the datatype of the returned
-        value.
-
-        Args:
-            typeCode (int): Type code constant.
-        """
-        print(self, typeCode)
 
 
 def addDatasource(
@@ -562,7 +479,7 @@ def runPrepQuery(query, args, database="", tx=None):
         PyDataSet: The results of the query as a PyDataSet.
     """
     print(query, args, database, tx)
-    return PyDataSet()
+    return DatasetUtilities.PyDataSet()
 
 
 def runPrepUpdate(
@@ -630,7 +547,7 @@ def runQuery(query, database="", tx=None):
         PyDataSet: The results of the query as a PyDataSet.
     """
     print(query, database, tx)
-    return PyDataSet()
+    return DatasetUtilities.PyDataSet()
 
 
 def runSFNamedQuery(*args):

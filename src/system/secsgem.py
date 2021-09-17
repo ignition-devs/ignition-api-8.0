@@ -1,7 +1,3 @@
-# Copyright (C) 2018-2021
-# Author: Cesar Roman
-# Contact: cesar@thecesrom.dev
-
 """SECS/GEM Functions.
 
 The following functions allow you to interact with equipment defined by
@@ -26,7 +22,7 @@ __all__ = [
 ]
 
 import system.date
-from system.dataset import Dataset
+from com.inductiveautomation.ignition.common import Dataset
 
 
 def copyEquipment(

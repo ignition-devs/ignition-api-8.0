@@ -1,7 +1,3 @@
-# Copyright (C) 2018-2021
-# Author: Cesar Roman
-# Contact: cesar@thecesrom.dev
-
 """OPC Functions.
 
 The following functions allow you to read, write and browser OPC
@@ -24,91 +20,13 @@ __all__ = [
     "writeValues",
 ]
 
-from abc import ABCMeta, abstractmethod
-
-from java.lang import Object
-
-
-class OPCBrowseTag(Object):
-    """BrowseTag class."""
-
-    def __init__(
-        self,
-        opcServer=None,
-        type=None,
-        displayName=None,
-        displayPath=None,
-        dataType=None,
-        opcItemPath=None,
-    ):
-        super(OPCBrowseTag, self).__init__()
-        self.opcServer = opcServer
-        self.type = type
-        self.displayName = displayName
-        self.displayPath = displayPath
-        self.dataType = dataType
-        self.opcItemPath = opcItemPath
-
-    def getDataType(self):
-        return self.dataType
-
-    def getDisplayName(self):
-        return self.displayName
-
-    def getDisplayPath(self):
-        return self.displayPath
-
-    def getOpcItemPath(self):
-        return self.opcItemPath
-
-    def getOpcServer(self):
-        return self.opcServer
-
-    def getType(self):
-        return self.type
-
-
-class QualifiedValue(ABCMeta):
-    """Represents a value with a DataQuality & timestamp attached to
-    it.
-    """
-
-    def __new__(mcs, *args, **kwargs):
-        pass
-
-    @abstractmethod
-    def getQuality(self):
-        pass
-
-    @abstractmethod
-    def getTimestamp(self):
-        pass
-
-    @abstractmethod
-    def getValue(self):
-        pass
-
-
-class Quality(ABCMeta):
-    def __new__(mcs, *args, **kwargs):
-        pass
-
-    @abstractmethod
-    def getDescription(self):
-        pass
-
-    def getLevel(self):
-        pass
-
-    @abstractmethod
-    def getName(self):
-        pass
-
-    def getQualityCode(self):
-        pass
-
-    def isGood(self):
-        pass
+from com.inductiveautomation.ignition.common.model.values import (
+    QualifiedValue,
+    QualityCode,
+)
+from com.inductiveautomation.ignition.common.script.builtin.ialabs import (
+    OPCBrowseTag,
+)
 
 
 def browse(opcServer, device, folderPath, opcItemPath):
@@ -307,11 +225,11 @@ def writeValue(opcServer, itemPath, value):
         value (object): The value to write to the OPC item.
 
     Returns:
-        Quality: The status of the write. Use returnValue.isGood() to
-            check if the write succeeded.
+        QualityCode: The status of the write. Use returnValue.isGood()
+            to check if the write succeeded.
     """
     print(opcServer, itemPath, value)
-    return Quality()
+    return QualityCode()
 
 
 def writeValues(opcServer, itemPaths, values):
@@ -332,8 +250,8 @@ def writeValues(opcServer, itemPaths, values):
             specified.
 
     Returns:
-        list[Quality]: An array of Quality objects, each entry
+        list[QualityCode]: An array of Quality objects, each entry
             corresponding in order to the addresses specified.
     """
     print(opcServer, itemPaths, values)
-    return [Quality()]
+    return [QualityCode()]

@@ -1,7 +1,3 @@
-# Copyright (C) 2018-2021
-# Author: Cesar Roman
-# Contact: cesar@thecesrom.dev
-
 """Roster Functions.
 
 Functions that provide roster manipulation, including adding and remove
@@ -12,7 +8,7 @@ from __future__ import print_function
 
 __all__ = ["addUsers", "createRoster", "getRosters", "removeUsers"]
 
-from system.user import PyUser
+from com.inductiveautomation.ignition.common.user import PyUser
 
 
 def addUsers(rosterName, users):

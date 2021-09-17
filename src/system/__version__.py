@@ -1,8 +1,4 @@
 # coding=utf-8
-# Copyright (C) 2018-2021
-# Author: Cesar Roman
-# Contact: cesar@thecesrom.dev
-
 """Package information."""
 
 __title__ = "ignition-api"
