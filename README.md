@@ -31,8 +31,13 @@ Before you begin, ensure you have met the following requirements:
 
 Ignition consists of the following packages:
 
+* com
 * java/javax
 * system
+
+### com
+
+These are libraries for some of Inductive Automation's Java packages and functions that are imported in `system` packages.
 
 ### java/javax
 
@@ -44,12 +49,12 @@ Is a package that includes all Ignition Scripting Functions.
 
 ## Installation and usage
 
-To use Ignition, download the code targeted to your desired version from the [releases page](https://github.com/thecesrom/Ignition/releases) and add it as a dependency to your scripting project.
+### Installing with `pip`
 
-Also, it can be installed by running `pip`. It requires Python 2.7 (we recommend version 2.7.18).
+The preferred method is to install it by running `pip`. It requires Python 2.7 (we recommend version 2.7.18).
 
 ```bash
-$ python2 -m pip install ignition-api==8.0.17
+$ python2 -m pip install ignition-api==8.0.17.post2
 ```
 
 This will install it as package to your Python installation, which will allow you to call Ignition Scripting functions from Python's REPL, and get code completion using an IDE (we recommend PyCharm).
@@ -71,9 +76,14 @@ Client data, as well as interact with other various systems.
 ```
 
 And to uninstall:
+
 ```bash
 $ python2 -m pip uninstall ignition-api
 ```
+
+### Downloading from releases
+
+You may also download the code targeted to your desired version from the [releases page](https://github.com/thecesrom/Ignition/releases) and add it as a dependency to your scripting project.
 
 ## Contributing to Ignition
 
