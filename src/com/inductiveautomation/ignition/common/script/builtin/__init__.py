@@ -4,7 +4,6 @@ __all__ = [
     "SystemUtilities",
 ]
 
-
 from com.inductiveautomation.ignition.common import Dataset
 from com.inductiveautomation.ignition.common.script.message import (
     Request,
@@ -132,6 +131,15 @@ class DatasetUtilities(Object):
         pass
 
     class PyDataSet(Dataset):
+        def __getitem__(self, item):
+            pass
+
+        def __iter__(self):
+            pass
+
+        def __len__(self):
+            pass
+
         def getColumnCount(self):
             pass
 

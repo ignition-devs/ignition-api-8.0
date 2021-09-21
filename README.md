@@ -54,7 +54,7 @@ Is a package that includes all Ignition Scripting Functions.
 The preferred method is to install it by running `pip`. It requires Python 2.7 (we recommend version 2.7.18).
 
 ```bash
-$ python2 -m pip install ignition-api==8.0.17.post2
+$ python2 -m pip install ignition-api==8.0.17.post3
 ```
 
 This will install it as package to your Python installation, which will allow you to call Ignition Scripting functions from Python's REPL, and get code completion using an IDE (we recommend PyCharm).
