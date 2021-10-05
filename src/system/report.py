@@ -13,7 +13,7 @@ __all__ = [
     "getReportNamesAsList",
 ]
 
-from com.inductiveautomation.ignition.common import Dataset
+from com.inductiveautomation.ignition.common import BasicDataset, Dataset
 from java.lang import IllegalArgumentException
 
 
@@ -108,7 +108,7 @@ def getReportNamesAsDataset(project="project"):
     if project is None:
         raise IllegalArgumentException()
 
-    return Dataset()
+    return BasicDataset()
 
 
 def getReportNamesAsList(project="project"):

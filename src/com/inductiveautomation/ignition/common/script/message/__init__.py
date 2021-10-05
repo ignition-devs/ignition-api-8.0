@@ -1,41 +1,26 @@
 __all__ = ["Request", "RequestWatcher"]
 
-from abc import ABCMeta, abstractmethod
 
-
-class Request(ABCMeta):
-    def __new__(mcs, *args, **kwargs):
-        pass
-
-    @abstractmethod
+class Request(object):
     def cancel(self):
-        pass
+        raise NotImplementedError
 
-    @abstractmethod
     def get(self):
-        pass
+        raise NotImplementedError
 
-    @abstractmethod
     def getError(self):
-        pass
+        raise NotImplementedError
 
-    @abstractmethod
     def onError(self, func):
-        pass
+        raise NotImplementedError
 
-    @abstractmethod
     def onSuccess(self, func):
-        pass
+        raise NotImplementedError
 
 
-class RequestWatcher(ABCMeta):
-    def __new__(mcs, *args, **kwargs):
-        pass
-
-    @abstractmethod
+class RequestWatcher(object):
     def block(self):
-        pass
+        raise NotImplementedError
 
-    @abstractmethod
     def compose(self, requestWatchers):
-        pass
+        raise NotImplementedError

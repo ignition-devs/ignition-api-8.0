@@ -1,9 +1,7 @@
-__all__ = ["Dataset"]
-
-from abc import ABCMeta, abstractmethod
+__all__ = ["AbstractDataset", "BasicDataset", "Dataset"]
 
 
-class Dataset(ABCMeta):
+class Dataset(object):
     """A dataset is a collection of values arranged in a structured
     format.
 
@@ -13,45 +11,125 @@ class Dataset(ABCMeta):
     data (row and column for tables).
     """
 
-    def __new__(mcs, *args, **kwargs):
+    def binarySearch(self, column, key):
         pass
 
-    @abstractmethod
-    def getColumnCount(cls):
+    def getColumnAsList(self, col):
         pass
 
-    @abstractmethod
-    def getColumnIndex(cls, name):
+    def getColumnCount(self):
+        raise NotImplementedError
+
+    def getColumnIndex(self, name):
+        raise NotImplementedError
+
+    def getColumnName(self, col):
+        raise NotImplementedError
+
+    def getColumnNames(self):
+        raise NotImplementedError
+
+    def getColumnType(self, col):
+        raise NotImplementedError
+
+    def getColumnTypes(self):
+        raise NotImplementedError
+
+    def getPrimitiveValueAt(self, row, col):
+        raise NotImplementedError
+
+    def getQualityAt(self, row, col):
+        raise NotImplementedError
+
+    def getRowCount(self):
+        raise NotImplementedError
+
+    def getValueAt(self, row, col):
+        raise NotImplementedError
+
+    def hasQualityData(self):
         pass
 
-    @abstractmethod
-    def getColumnName(cls, col):
+
+class AbstractDataset(Dataset):
+    _columnNames = None
+    _columnNamesLowercase = None
+    _columnTypes = None
+    _qualityCodes = None
+
+    def __init__(self, columnNames, columnTypes, qualityCodes=None):
+        self._columnNames = columnNames
+        self._columnTypes = columnTypes
+        self._qualityCodes = qualityCodes
+
+    @staticmethod
+    def convertToQualityCodes(dataQualities):
         pass
 
-    @abstractmethod
-    def getColumnNames(cls):
+    def getBulkQualityCodes(self):
         pass
 
-    @abstractmethod
-    def getColumnType(cls, col):
+    def getColumnCount(self):
         pass
 
-    @abstractmethod
-    def getColumnTypes(cls):
+    def getColumnIndex(self, name):
         pass
 
-    @abstractmethod
-    def getPrimitiveValueAt(cls):
+    def getColumnName(self, col):
         pass
 
-    @abstractmethod
-    def getQualityAt(cls, row, col):
+    def getColumnNames(self):
         pass
 
-    @abstractmethod
-    def getRowCount(cls):
+    def getColumnType(self, col):
         pass
 
-    @abstractmethod
-    def getValueAt(cls, *args):
+    def getColumnTypes(self):
+        pass
+
+    def getPrimitiveValueAt(self, row, col):
+        pass
+
+    def getQualityAt(self, row, col):
+        pass
+
+    def getRowCount(self):
+        pass
+
+    def getValueAt(self, row, col):
+        pass
+
+    def setColumnNames(self, arg):
+        pass
+
+    def setColumnTypes(self, arg):
+        pass
+
+    def setDirty(self):
+        pass
+
+
+class BasicDataset(AbstractDataset):
+    def __init__(self, columnNames=None, columnTypes=None):
+        super(BasicDataset, self).__init__(columnNames, columnTypes)
+
+    def columnContainsNulls(self, col):
+        pass
+
+    def datasetContainsNulls(self):
+        pass
+
+    def getData(self):
+        pass
+
+    def setAllDirectly(self, columnNames, columnTypes, data):
+        pass
+
+    def setDataDirectly(self, arg):
+        pass
+
+    def setFromXML(self, columnNames, columnTypes, encodedData, rowCount):
+        pass
+
+    def setValueAt(self, row, col, value):
         pass

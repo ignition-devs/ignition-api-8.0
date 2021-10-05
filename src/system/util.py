@@ -58,12 +58,13 @@ import sys
 import system.__version__ as version
 import system.date
 import system.security
-from com.inductiveautomation.ignition.common import Dataset
+from com.inductiveautomation.ignition.common import BasicDataset, Dataset
 from com.inductiveautomation.ignition.common.model import Version
-from com.inductiveautomation.ignition.common.script import Request
 from com.inductiveautomation.ignition.common.script.builtin import (
     DatasetUtilities,
+    SystemUtilities,
 )
+from com.inductiveautomation.ignition.common.script.message import Request
 from com.inductiveautomation.ignition.common.util import LoggerEx
 from java.awt import Toolkit
 from java.lang import Thread
@@ -315,7 +316,8 @@ def getInactivitySeconds():
         long: The number of seconds the mouse and keyboard have been
             inactive for this client.
     """
-    return long(0)
+    long_instance = int if sys.version_info[0] == 3 else long
+    return long_instance(0)
 
 
 def getLocale():
@@ -635,7 +637,7 @@ def queryAuditLog(
         systemFilter,
         contextFilter,
     )
-    return Dataset()
+    return BasicDataset()
 
 
 def retarget(project, addresses=None, params=None, windows=None):
@@ -852,7 +854,7 @@ def sendRequestAsync(
         onSuccess,
         onError,
     )
-    return Request()
+    return SystemUtilities.RequestImpl()
 
 
 def setConnectTimeout(connectTimeout):

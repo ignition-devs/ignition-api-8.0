@@ -4,7 +4,7 @@ __all__ = [
     "SystemUtilities",
 ]
 
-from com.inductiveautomation.ignition.common import Dataset
+from com.inductiveautomation.ignition.common import BasicDataset, Dataset
 from com.inductiveautomation.ignition.common.script.message import (
     Request,
     RequestWatcher,
@@ -158,7 +158,7 @@ class DatasetUtilities(Object):
         def getColumnTypes(self):
             pass
 
-        def getPrimitiveValueAt(self):
+        def getPrimitiveValueAt(self, row, col):
             pass
 
         def getQualityAt(self, row, col):
@@ -207,7 +207,7 @@ class SProcCall(Object):
                 stored procedure, if any.
         """
         print(self)
-        return Dataset()
+        return BasicDataset()
 
     def getReturnValue(self):
         """Returns the return value, if registerReturnParam had been

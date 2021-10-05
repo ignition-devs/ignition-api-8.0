@@ -15,7 +15,11 @@ __all__ = [
 
 import copy
 import time
-from __builtin__ import Exception as PyException
+
+try:
+    import __builtin__ as builtins
+except ImportError:
+    import builtins
 
 
 class Object(object):
@@ -120,7 +124,7 @@ class Object(object):
         pass
 
 
-class Throwable(Object, PyException):
+class Throwable(Object, builtins.Exception):
     """The Throwable class is the superclass of all errors and
     exceptions in the Java language.
     """
@@ -136,8 +140,9 @@ class Throwable(Object, PyException):
                 permitted, and indicates that the cause is nonexistent
                 or unknown.).
         """
-        PyException.__init__(self, message)
         self._cause = cause
+        self.message = message
+        builtins.Exception.__init__(self, message)
 
     @property
     def cause(self):
