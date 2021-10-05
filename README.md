@@ -14,7 +14,7 @@
 
 Ignition is a set of packages and modules that allows developers to get code completion for Ignition Scripting API scripting functions in their IDE of choice.
 
-# Releases
+## Releases
 
 Check the [releases page](https://github.com/thecesrom/Ignition/releases) and download the one for your current version.
 
@@ -51,10 +51,10 @@ Is a package that includes all Ignition Scripting Functions.
 
 ### Installing with `pip`
 
-The preferred method is to install it by running `pip`. It requires Python 2.7 (we recommend version 2.7.18).
+The preferred method is to install it by running `pip`. It requires Python 2.7.18, or higher.
 
 ```bash
-$ python2 -m pip install ignition-api==8.0.17.post3
+python2 -m pip install ignition-api==8.0.17.post3
 ```
 
 This will install it as package to your Python installation, which will allow you to call Ignition Scripting functions from Python's REPL, and get code completion using an IDE (we recommend PyCharm).
@@ -78,7 +78,7 @@ Client data, as well as interact with other various systems.
 And to uninstall:
 
 ```bash
-$ python2 -m pip uninstall ignition-api
+python2 -m pip uninstall ignition-api
 ```
 
 ### Downloading from releases

@@ -1,4 +1,4 @@
-#!/usr/bin/env python2
+#!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
 """Ignition API."""
@@ -28,6 +28,7 @@ setup(
     author_email=about["__author_email__"],
     license=about["__license__"],
     classifiers=[
+        "Development Status :: 5 - Production/Stable",
         "Intended Audience :: Information Technology",
         "Intended Audience :: Manufacturing",
         "License :: OSI Approved :: MIT License",
@@ -35,13 +36,13 @@ setup(
         "Operating System :: Microsoft :: Windows",
         "Operating System :: POSIX :: Linux",
         "Programming Language :: Python",
-        "Programming Language :: Python :: 2 :: Only",
         "Programming Language :: Python :: 2.7",
+        "Programming Language :: Python :: 3",
         "Topic :: Software Development :: Libraries :: Python Modules",
         "Topic :: Software Development :: Testing :: Mocking",
     ],
     keywords="hmi, ignition, inductive automation, scada",
     package_dir={"": "src"},
     packages=find_packages(where="src"),
-    python_requires=">=2.7, !=3.*",
+    python_requires=">=2.7.18",
 )
