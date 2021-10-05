@@ -131,6 +131,11 @@ class DatasetUtilities(Object):
         pass
 
     class PyDataSet(Dataset):
+        _ds = None
+
+        def __init__(self, ds=None):
+            self._ds = ds
+
         def __getitem__(self, item):
             pass
 
@@ -330,7 +335,7 @@ class SystemUtilities(Object):
     def parseTranslateArguments(*args, **kwargs):
         pass
 
-    class RequestImpl(Request, RequestWatcher):
+    class RequestImpl(Object, Request):
         def block(self):
             pass
 
