@@ -32,9 +32,4 @@ class BufferedImage(Image):
     """
 
     def __init__(self, *args):
-        """Constructs a BufferedImage.
-
-        Args:
-            *args: Variable length argument list.
-        """
         print(args)

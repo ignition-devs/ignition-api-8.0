@@ -35,447 +35,465 @@ __all__ = [
     "removeUser",
 ]
 
-import system.date
-from com.inductiveautomation.ignition.client.util.gui.scheduling import (
-    ScheduleModel,
-)
+from typing import List, Optional, Union
+
 from com.inductiveautomation.ignition.common.messages import UIResponse
 from com.inductiveautomation.ignition.common.user import PyUser
+from com.inductiveautomation.ignition.common.user.schedule import (
+    AbstractScheduleModel,
+    BasicScheduleModel,
+    HolidayModel,
+    ScheduleAdjustment,
+)
 from java.util import Date, Locale
+
+String = Union[str, unicode]
 
 
 def addCompositeSchedule(name, scheduleOne, scheduleTwo, description=None):
+    # type: (String, String, String, Optional[String]) -> UIResponse
     """Allows two schedules to be combined into a composite schedule.
 
     Args:
-        name (str): The name of the new composite schedule.
-        scheduleOne (str): The first schedule to combine.
-        scheduleTwo (str): The second schedule to combine.
-        description (str): Description of the new combined schedule.
-            Optional.
+        name: The name of the new composite schedule.
+        scheduleOne: The first schedule to combine.
+        scheduleTwo: The second schedule to combine.
+        description: Description of the new combined schedule. Optional.
 
     Returns:
-        UIResponse: A UIResponse object with lists of warnings, errors,
-            and info about the success or failure of the add.
+        A UIResponse object with lists of warnings, errors, and info
+        about the success or failure of the add.
     """
     print(name, scheduleOne, scheduleTwo, description)
     return UIResponse(Locale.ENGLISH)
 
 
 def addHoliday(holiday):
+    # type: (HolidayModel) -> UIResponse
     """Allows a holiday to be added.
 
     Args:
-        holiday (HolidayModel): The holiday to add, as a HolidayModel
-            object.
+        holiday: The holiday to add.
 
     Returns:
-        UIResponse: A UIResponse object with lists of warnings, errors,
-            and info about the success or failure of the add.
+        A UIResponse object with lists of warnings, errors, and info
+        about the success or failure of the add.
     """
     print(holiday)
     return UIResponse(Locale.ENGLISH)
 
 
 def addRole(userSource, role):
+    # type: (String, String) -> UIResponse
     """Allows a role to the specified user source.
 
     When altering the Gateway System User Source, the Allow User Admin
     setting must be enabled.
 
     Args:
-        userSource (str): The user source to add a role to. Blank will
-            use the default user source.
-        role (str): The role to add. Role must not be blank and must not
+        userSource: The user source to add a role to. Blank will use the
+            default user source.
+        role: The role to add. Role must not be blank and must not
             already exist.
 
     Returns:
-        UIResponse: A UIResponse object with lists of warnings, errors,
-            and info about the success or failure of the add.
+        A UIResponse object with lists of warnings, errors, and info
+        about the success or failure of the add.
     """
     print(userSource, role)
     return UIResponse(Locale.ENGLISH)
 
 
 def addSchedule(schedule):
+    # type: (AbstractScheduleModel) -> UIResponse
     """Allows a schedule to be added.
 
     Args:
-        schedule (ScheduleModel): The schedule to add. Can be a
-            BasicScheduleModel or CompositeScheduleModel object (or any
-            other class that extends AbstractScheduleModel).
+        schedule: The schedule to add. Can be a BasicScheduleModel or
+            CompositeScheduleModel object (or any other class that
+            extends AbstractScheduleModel).
 
     Returns:
-        UIResponse: A UIResponse object with lists of warnings, errors,
-            and info about the success or failure of the add.
+        A UIResponse object with lists of warnings, errors, and info
+        about the success or failure of the add.
     """
     print(schedule)
     return UIResponse(Locale.ENGLISH)
 
 
 def addUser(userSource, user):
+    # type: (String, PyUser) -> UIResponse
     """Adds a new user to a user source.
 
     Used in combination with getNewUser to create new user.
 
     Args:
-        userSource (str):
-        user (PyUser): The user to add, as a User object. Refer also to
-            the PyUser class.
+        userSource: The user source to add a user to. If set to an empty
+            string, the function will attempt to use the project's
+            default user source (if called from a project).
+        user: The user to add, as a User object. Refer also to the
+            PyUser class.
 
     Returns:
-        UIResponse: A UIResponse object with lists of warnings, errors,
-            and info about the success or failure of the add attempt.
+        A UIResponse object with lists of warnings, errors, and info
+        about the success or failure of the add attempt.
     """
     print(userSource, user)
     return UIResponse(Locale.ENGLISH)
 
 
 def createScheduleAdjustment(startDate, endDate, isAvailable, note):
+    # type: (Date, Date, bool, String) -> ScheduleAdjustment
     """Creates a schedule adjustment.
 
     Args:
-        startDate (Date): The starting date of the schedule
+        startDate: The starting date of the schedule adjustment.
+        endDate: The ending date of the schedule adjustment.
+        isAvailable: True if the user is available during this schedule
             adjustment.
-        endDate (Date): The ending date of the schedule adjustment.
-        isAvailable (bool): True if the user is available during this
-            schedule adjustment.
-        note (str): A note about the schedule adjustment.
+        note: A note about the schedule adjustment.
 
     Returns:
-        ScheduleAdjustment: A ScheduleAdjustment object that can be
-            added to a user.
+        A ScheduleAdjustment object that can be added to a user.
     """
     print(startDate, endDate, isAvailable, note)
+    return ScheduleAdjustment()
 
 
 def editHoliday(holidayName, holiday):
+    # type: (String, HolidayModel) -> UIResponse
     """Allows a holiday to be edited.
 
     Args:
-        holidayName (str): The name of the holiday to edit. Name is
+        holidayName: The name of the holiday to edit. Name is
             case-sensitive.
-        holiday (HolidayModel): The edited holiday, as a HolidayModel
-            object.
+        holiday: The edited holiday, as a HolidayModel object.
 
     Returns:
-        UIResponse: An object with lists of warnings, errors, and info
-            about the success or failure of the edit.
+        A UIResponse object with lists of warnings, errors, and info
+        about the success or failure of the edit.
     """
     print(holidayName, holiday)
     return UIResponse(Locale.ENGLISH)
 
 
 def editRole(userSource, oldName, newName):
+    # type: (String, String, String) -> UIResponse
     """Renames a role in the specified user source.
 
     When altering the Gateway System User Source, the Allow User Admin
     setting must be enabled.
 
     Args:
-        userSource (str): The user source in which the role is found.
-            Blank will use the default user source.
-        oldName (str): The role to edit. Role must not be blank and must
+        userSource: The user source in which the role is found. Blank
+            will use the default user source.
+        oldName: The role to edit. Role must not be blank and must
             exist.
-        newName (str): The new name for the role. Must not be blank.
+        newName: The new name for the role. Must not be blank.
 
     Returns:
-        UIResponse: An object with lists of warnings, errors, and info
-            about the success or failure of the edit.
+        A UIResponse object with lists of warnings, errors, and info
+        about the success or failure of the edit.
     """
     print(userSource, oldName, newName)
     return UIResponse(Locale.ENGLISH)
 
 
 def editSchedule(scheduleName, schedule):
+    # type: (String, AbstractScheduleModel) -> UIResponse
     """Allows a schedule to be edited.
 
     Args:
-        scheduleName (str): The name of the schedule to edit. Name is
+        scheduleName: The name of the schedule to edit. Name is
             case-sensitive.
-        schedule (ScheduleModel): The schedule to add. Can be a
-            BasicScheduleModel or CompositeScheduleModel object (or any
-            other class that extends AbstractScheduleModel).
+        schedule: The schedule to add. Can be a BasicScheduleModel or
+            CompositeScheduleModel object (or any other class that
+            extends AbstractScheduleModel).
 
     Returns:
-        UIResponse: An object with lists of warnings, errors, and info
-            about the success or failure of the edit.
+        A UIResponse object with lists of warnings, errors, and info
+        about the success or failure of the edit.
     """
     print(scheduleName, schedule)
     return UIResponse(Locale.ENGLISH)
 
 
 def editUser(userSource, user):
+    # type: (String, PyUser) -> UIResponse
     """Alters a specific user in a user source, replacing the previous
     data with the new data passed in.
 
     Args:
-        userSource (str): The user source in which the user is found.
-            Blank will use the default user source.
-        user (PyUser): The user to update, as a User object. Refer also
-            to the PyUser class.
+        userSource: The user source in which the user is found. Blank
+            will use the default user source.
+        user: The user to update.
 
     Returns:
-        UIResponse: A UIResponse object with lists of warnings, errors,
-            and information returned after the edit attempt.
+        A UIResponse object with lists of warnings, errors, and
+        information returned after the edit attempt.
     """
     print(userSource, user)
     return UIResponse(Locale.ENGLISH)
 
 
 def getHoliday(holidayName):
+    # type: (String) -> Optional[HolidayModel]
     """Returns a specific holiday.
 
     Args:
-        holidayName (str): The name of the holiday to return.
-            Case-sensitive.
+        holidayName: The name of the holiday to return. Case-sensitive.
 
     Returns:
-        HolidayModel: The holiday, as a HolidayModel object, or None if
-            not found.
+        The holiday, as a HolidayModel object,, or None if not found.
     """
     print(holidayName)
+    return HolidayModel(holidayName, Date(), True)
 
 
 def getHolidayNames():
+    # type: () -> List[String]
     """Returns a collection of Strings of all holiday names.
 
     Returns:
-        list[str]: A list of all holiday names, or an empty list if no
-            holidays are defined.
+        A list of all holiday names, or an empty list if no holidays are
+        defined.
     """
-    return ["Labor Day", "Groundhog Day"]
+    return ["Cinco de mayo", "Labor Day", "Groundhog Day"]
 
 
 def getHolidays():
+    # type: () -> List[HolidayModel]
     """Returns a sequence of all of the holidays available.
 
     Returns:
-        list[HolidayModel]: A list of holidays, as HolidayModel objects.
+        A list of holidays, as HolidayModel objects.
     """
-    return []
+    return [HolidayModel("Cinco de mayo", Date(), True)]
 
 
 def getNewUser(userSource, username):
+    # type: (String, String) -> PyUser
     """Creates a new user object.
 
     The user will not be added to the user source until addUser is
     called.
 
     Args:
-        userSource (str): The name of the user source in which to create
-            a user.
-        username (str): The username for the new user. Does not check if
+        userSource: The name of the user source in which to create a
+            user.
+        username: The username for the new user. Does not check if
             username already exists or is valid.
 
     Returns:
-        PyUser: The new user, as a User object. Refer also to the PyUser
-            class.
+        The new user.
     """
     print(userSource, username)
     return PyUser()
 
 
 def getRoles(userSource):
+    # type: (String) -> List[String]
     """Returns a sequence of strings representing all of the roles
     configured in a specific user source.
 
     Args:
-        userSource (str): The user source to fetch the roles for.
+        userSource: The user source to fetch the roles for.
 
     Returns:
-        list[str]: A List of Strings that holds all the roles in the
-            user source.
+        A List of strings that holds all the roles in the user source.
     """
     print(userSource)
+    return ["Administrator", "Designer", "Developer"]
 
 
 def getSchedule(scheduleName):
+    # type: (String) -> Optional[AbstractScheduleModel]
     """Returns a specific schedule.
 
     Args:
-        scheduleName (str): The name of the schedule to return.
+        scheduleName: The name of the schedule to return.
             Case-sensitive.
 
     Returns:
-         ScheduleModel: The schedule, which can be a BasicScheduleModel
-            object, CompositeScheduleModel object, or another type
-            registered by a module. If a schedule was not found, the
-            function will return None if called from a Vision Client or
-            the Designer. if called in from a Perspective Session or
-            anywhere else in the Gateway scope, will throw an
-            IllegalArgumentException.
+         The schedule, which can be a BasicSchedule, CompositeSchedule,
+         or another type registered by a module. If a schedule was not
+         found, the function will return None if called from a Vision
+         Client or the Designer. if called in from a Perspective Session
+         or anywhere else in the Gateway scope, will throw an
+         IllegalArgumentException.
     """
     print(scheduleName)
+    return BasicScheduleModel()
 
 
 def getScheduleNames():
+    # type: () -> List[String]
     """Returns a sequence of strings representing the names of all of
     the schedules available.
 
     Returns:
-        list[str]: A List of Strings that holds the names of all the
-            available schedules.
+        A List of strings that holds the names of all the available
+        schedules.
     """
     return ["A", "Always", "B", "C", "Example", "MyComposite", "MySchedule"]
 
 
 def getScheduledUsers(userSource, date=None):
+    # type: (String, Optional[Union[Date, int]]) -> List[PyUser]
     """Returns a list of users that are scheduled on.
 
     If no users are scheduled, it will return an empty list.
 
     Args:
-        userSource (str): The name of the user source to check for
-            scheduled users.
-        date (object): The date to check schedules for. May be a Java
-            Date or Unix Time in ms.. If omitted, the current date and
-            time will be used. Optional.
+        userSource: The name of the user source to check for scheduled
+            users.
+        date: The date to check schedules for. May be a Java Date or
+            Unix Time in ms.. If omitted, the current date and time will
+            be used. Optional.
 
     Returns:
-        list[PyUser]: List of all Users scheduled for the given date,
-            taking schedule adjustments into account. Refer also to the
-            PyUser class.
+        List of all Users scheduled for the given date, taking schedule
+        adjustments into account.
     """
-    date = system.date.now() if date is None else date
     print(userSource, date)
+    return [PyUser()]
 
 
 def getSchedules():
+    # type: () -> List[AbstractScheduleModel]
     """Returns a sequence of all available schedule models, which can be
     used to return configuration information on the schedule, such as
     time for each day of the week.
 
     Returns:
-        list[ScheduleModel]: A list of schedules. Each schedule can be a
-            BasicScheduleModel object, CompositeScheduleModel object, or
-            another type registered by a module.
+        A list of schedules. Each schedule can be a BasicScheduleModel
+        object, CompositeScheduleModel object, or another type
+        registered by a module.
     """
-    return [ScheduleModel()]
+    return [BasicScheduleModel()]
 
 
 def getUser(userSource, username):
+    # type: (String, String) -> PyUser
     """Looks up a specific user in a user source, by username.
 
     The full User object is returned except for the user's password.
 
     Args:
-        userSource (str): The name of the user source to search for the
-            user in. Can be a blank string to use the Vision Client's
-            default user source.
-        username (str): The username of the user to search for.
+        userSource: The name of the user source to search for the user
+            in. Can be a blank string to use the Vision Client's default
+            user source.
+        username: The username of the user to search for.
 
     Returns:
-        PyUser: The user, as a User object. Refer also to the PyUser
-            class.
+        The user.
     """
     print(userSource, username)
     return PyUser()
 
 
 def getUsers(userSource):
+    # type: (String) -> List[PyUser]
     """Retrieves the list of users in a specific user source.
 
     The User objects that are returned contain all of the information
     about that user, except for the user's password.
 
     Args:
-        userSource (str): The name of the user source to find the users
-            in.
+        userSource: The name of the user source to find the users in.
 
     Returns:
-        list[PyUser]: A list of User objects. Refer also to the PyUser
-            class.
+        A list of User objects.
     """
     print(userSource)
-    # You may return more than one User object.
     return [PyUser()]
 
 
 def isUserScheduled(user, date=None):
+    # type: (PyUser, Optional[Union[Date, int]]) -> bool
     """Will check if a specified User is scheduled currently or on a
     specified date/time.
 
     Args:
-        user (PyUser): The user object to check the schedule for.
-        date (object): The date to check schedules for. May be a Java
-            Date or Unix Time in ms. If omitted, the current date and
-            time will be used. Optional.
+        user: The User object to check for on the schedule.
+        date: The date to check schedules for. May be a Java Date or
+            Unix Time in ms. If omitted, the current date and time
+            will be used. Optional.
 
     Returns:
-        bool: True if the user is scheduled for the specified date,
-            False if not.
+        True if the user is scheduled for the specified date, False if
+        not.
     """
-    date = system.date.now() if date is None else date
     print(user, date)
     return True
 
 
 def removeHoliday(holidayName):
+    # type: (String) -> UIResponse
     """Allows a holiday to be deleted.
 
     Args:
-        holidayName (str): The name of the holiday to delete. Name is
+        holidayName: The name of the holiday to delete. Name is
             case-sensitive.
 
     Returns:
-        UIResponse: An object with lists of warnings, errors, and info
-            about the success or failure of the deletion.
+        A UIResponse object with lists of warnings, errors, and info
+        about the success or failure of the deletion.
     """
     print(holidayName)
     return UIResponse(Locale.ENGLISH)
 
 
 def removeRole(userSource, role):
+    # type: (String, String) -> UIResponse
     """Removes a role from the specified user source.
 
     When altering the Gateway System User Source, the Allow User Admin
     setting must be enabled.
 
     Args:
-        userSource (str): The user source in which the role is found.
-            Blank will use the default user source.
-        role (str): The role to remove. The role must exist.
+        userSource: The user source in which the role is found. Blank
+            will use the default user source.
+        role: The role to remove. The role must exist.
 
     Returns:
-        UIResponse: An object with lists of warnings, errors, and info
-            about the success or failure of the deletion.
+        A UIResponse object with lists of warnings, errors, and info
+        about the success or failure of the deletion.
     """
     print(userSource, role)
     return UIResponse(Locale.ENGLISH)
 
 
 def removeSchedule(scheduleName):
+    # type: (String) -> UIResponse
     """Allows a schedule to be deleted.
 
     Note that schedules which are used in Composite Schedules can not be
     deleted until they are removed from the Composite Schedule.
 
     Args:
-        scheduleName (str): The name of the schedule to delete. Name is
+        scheduleName: The name of the schedule to delete. Name is
             case-sensitive.
 
     Returns:
-        UIResponse: An object with lists of warnings, errors, and info
-            about the success or failure of the deletion.
+        A UIResponse object with lists of warnings, errors, and info
+        about the success or failure of the deletion.
     """
     print(scheduleName)
     return UIResponse(Locale.ENGLISH)
 
 
 def removeUser(userSource, username):
-    """Removes a specific user from the a user source based on username.
+    # type: (String, String) -> UIResponse
+    """Removes a specific user from a user source based on username.
 
-    When altering the Gateway System User Source, the Allow User Admin
-    setting must be enabled.
-
-    Args:
-        userSource (str): The user source in which the user is found.
-            Blank will use the default user source.
-        username (str): The username of the user to remove.
+        userSource: The user source in which the user is found. Blank
+            will use the default user source.
+        username: The username of the user to remove.
 
     Returns:
-        UIResponse: An UIResponse object with lists of warnings, errors,
-            and information returned after the removal attempt.
+        A UIResponse object with lists of warnings, errors, and
+        information returned after the removal attempt.
     """
     print(userSource, username)
+    return UIResponse(Locale.ENGLISH)

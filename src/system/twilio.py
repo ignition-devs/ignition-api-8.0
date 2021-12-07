@@ -15,42 +15,47 @@ __all__ = [
     "sendSms",
 ]
 
-from com.inductiveautomation.ignition.common import BasicDataset, Dataset
+from typing import List, Sequence, Union
+
+from com.inductiveautomation.ignition.common import BasicDataset
+
+String = Union[str, unicode]
 
 
 def getAccounts():
+    # type: () -> List[String]
     """Return a list of Twilio accounts that have been configured in the
     Gateway.
 
     Returns:
-        list[str]: A list of configured Twilio accounts.
+        A list of configured Twilio accounts.
     """
     return ["twilio_account1", "twilio_account2"]
 
 
 def getAccountsDataset():
+    # type: () -> BasicDataset
     """Return a list of Twilio accounts that have been configured in the
     Gateway as a single-column Dataset.
 
     Returns:
-        Dataset: A list of configured Twilio accounts as a single-column
-            Dataset.
+        A list of configured Twilio accounts as a single-column Dataset.
     """
     return BasicDataset()
 
 
 def getPhoneNumbers(accountName):
+    # type: (String) -> Sequence
     """Returns a list of outgoing phone numbers for a Twilio account.
 
     Note that these numbers are supplied by Twilio, and are not defined
     on a user in Ignition.
 
     Args:
-        accountName (str): The Twilio account to retrieve phone numbers
-            for.
+        accountName: The Twilio account to retrieve phone numbers for.
 
     Returns:
-        list[str]: A list of phone numbers for the given Twilio account.
+        A list of phone numbers for the given Twilio account.
     """
     phoneNumbers = []
     if accountName == "Jenny":
@@ -59,6 +64,7 @@ def getPhoneNumbers(accountName):
 
 
 def getPhoneNumbersDataset(accountName):
+    # type: (String) -> BasicDataset
     """Return a list of outgoing phone numbers for a Twilio account as a
     single-column Dataset.
 
@@ -66,25 +72,25 @@ def getPhoneNumbersDataset(accountName):
     on a user in Ignition.
 
     Args:
-        accountName (str): The Twilio account to retrieve phone numbers
-            for.
+        accountName: The Twilio account to retrieve phone numbers for.
 
     Returns:
-        Dataset: A list of phone numbers for the given Twilio account as
-            a single-column Dataset.
+        A list of phone numbers for the given Twilio account as a
+        single-column Dataset.
     """
     print(accountName)
     return BasicDataset()
 
 
 def sendSms(accountName, fromNumber, toNumber, message):
+    # type: (String, String, String, String) -> None
     """Sends an SMS message.
 
     Args:
-        accountName (str): The Twilio account to send the SMS from.
-        fromNumber (str): The outbound phone number belonging to the
-            Twilio account to use.
-        toNumber (str): The phone number of the recipient.
-        message (str): The body of the SMS.
+        accountName: The Twilio account to send the SMS from.
+        fromNumber: The outbound phone number belonging to the Twilio
+            account to use.
+        toNumber: The phone number of the recipient.
+        message: The body of the SMS.
     """
     print(accountName, fromNumber, toNumber, message)

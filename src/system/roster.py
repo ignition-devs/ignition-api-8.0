@@ -8,20 +8,25 @@ from __future__ import print_function
 
 __all__ = ["addUsers", "createRoster", "getRosters", "removeUsers"]
 
+from typing import Dict, List, Union
+
 from com.inductiveautomation.ignition.common.user import PyUser
+
+String = Union[str, unicode]
 
 
 def addUsers(rosterName, users):
+    # type: (String, List[PyUser]) -> None
     """Adds a list of users to an existing roster.
 
     Users are always appended to the end of the roster.
 
     Args:
-        rosterName (str): The name of the roster to modify.
-        users (list[PyUser]): A list of User objects that will be added
-            to the end of the roster. User objects can be created with
-            the system.user.getUser and system.user.addUser functions.
-            These users must exist before being added to the roster.
+        rosterName: The name of the roster to modify.
+        users: A list of User objects that will be added to the end of
+            the roster. User objects can be created with the
+            system.user.getUser and system.user.addUser functions. These
+            users must exist before being added to the roster.
     """
     print(rosterName)
     for user in users:
@@ -29,6 +34,7 @@ def addUsers(rosterName, users):
 
 
 def createRoster(name, description):
+    # type: (String, String) -> None
     """Creates a roster with the given name and description, if it does
     not already exist.
 
@@ -37,14 +43,15 @@ def createRoster(name, description):
     system.alarm.createRoster instead.
 
     Args:
-        name (str): The name of the roster to create.
-        description (str): The description for the roster. May be None,
-            but the parameter is mandatory.
+        name: The name of the roster to create.
+        description: The description for the roster. May be None, but
+            the parameter is mandatory.
     """
     print(name, description)
 
 
 def getRosters():
+    # type: () -> Dict[String, List[String]]
     """Returns a dictionary of rosters, where the key is the name of the
     roster, and the value is an array list of string user names.
 
@@ -53,20 +60,22 @@ def getRosters():
     system.alarm.getRosters instead.
 
     Returns:
-        dict: A python dictionary of rosters. Refer to the list of User
-            objects.
+        A dictionary that maps roster names to a list of usernames in
+        the roster. The list of usernames may be empty if no users have
+        been added to the roster.
     """
     return {}
 
 
 def removeUsers(rosterName, users):
+    # type: (String, List[PyUser]) -> None
     """Removes one or more users from an existing roster.
 
     Args:
-        rosterName (str): The name of the roster to modify.
-        users (list[PyUser]): A list of user objects that will be added
-            to the end of the roster. User objects can be created with
-            the system.user.getUser and system.user.addUser functions.
+        rosterName: The name of the roster to modify.
+        users: A list of user objects that will be added to the end of
+            the roster. User objects can be created with the
+            system.user.getUser and system.user.addUser functions.
     """
     print(rosterName)
     for user in users:

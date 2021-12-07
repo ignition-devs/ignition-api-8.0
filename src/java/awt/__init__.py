@@ -40,11 +40,6 @@ class Color(Object):
     """
 
     def __init__(self, *args):
-        """Creates a color.
-
-        Args:
-            *args: Variable length argument list.
-        """
         print(args)
 
 
@@ -62,11 +57,6 @@ class Container(Component):
     """
 
     def add(self, *args):
-        """Adds the specified component.
-
-        Args:
-            *args: Variable length argument list.
-        """
         print(self, args)
 
 
@@ -89,14 +79,10 @@ class Toolkit(Object):
     """
 
     def beep(self):
-        """Emits an audio beep depending on native system settings and
-        hardware capabilities.
-        """
         print(self, "Beep!")
 
     @staticmethod
     def getDefaultToolkit():
-        """Gets the default toolkit."""
         return Toolkit()
 
 

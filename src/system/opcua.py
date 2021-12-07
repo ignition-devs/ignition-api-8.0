@@ -8,24 +8,33 @@ from __future__ import print_function
 
 __all__ = ["callMethod"]
 
+from typing import Any, List, Tuple, Union
 
-def callMethod(connectionName, objectId, methodId, inputs):
-    """Calls a method in an OPC UA server.
+String = Union[str, unicode]
 
-    To make the most of this function, you'll need to be familiar with
-    methods in the OPC-UA server.
+
+def callMethod(
+    connectionName,  # type: String
+    objectId,  # type: String
+    methodId,  # type: String
+    inputs,  # type: List[String]
+):
+    # type: (...) -> Tuple[Any, Any, Any]
+    """Calls a method in an OPC UA Server.
+
+    To make the most of this n, you'll need to be familiar with methods
+    in the OPC UA Server.
 
     Args:
-        connectionName (str): The name of the OPC-UA connection to the
-            server that the method resides in.
-        objectId (str): The NodeId of the Object Node the Method is a
-            member of.
-        methodId (str): The NodeId of the Method Node to call.
-        inputs (list[object]): A list of input values expected by the
-            method.
+        connectionName: The name of the OPC UA connection to the Server
+            that the method resides in.
+        objectId: The NodeId of the Object Node the Method is a member
+            of.
+        methodId: The NodeId of the Method Node to call.
+        inputs: A list of input values expected by the method.
 
     Returns:
-        tuple: A tuple containing the following:
+        A tuple containing the following:
             0: Resulting StatusCode for the call
             1: A list of StatusCode objects corresponding to each
                 input argument
@@ -33,3 +42,4 @@ def callMethod(connectionName, objectId, methodId, inputs):
 
     """
     print(connectionName, objectId, methodId, inputs)
+    return None, None, None

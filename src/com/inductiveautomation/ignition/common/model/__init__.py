@@ -76,9 +76,7 @@ class Version(Object):
 
     def getBasicString(self):
         if self.rc > 0:
-            ret = "{}.{}.{}-rc{}".format(
-                self.major, self.minor, self.rev, self.rc
-            )
+            ret = "{}.{}.{}-rc{}".format(self.major, self.minor, self.rev, self.rc)
         else:
             ret = "{}.{}.{}".format(self.major, self.minor, self.rev)
         return ret
@@ -126,9 +124,7 @@ class Version(Object):
         Returns:
             string: Compact, parseable (non-XML) string.
         """
-        return "{}.{}.{}.{}".format(
-            self.major, self.minor, self.rev, self.build
-        )
+        return "{}.{}.{}.{}".format(self.major, self.minor, self.rev, self.build)
 
     def toString(self):
         if self.rc > 0:

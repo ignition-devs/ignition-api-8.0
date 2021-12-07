@@ -1,16 +1,67 @@
-__all__ = [
-    "DatasetUtilities",
-    "SProcCall",
-    "SystemUtilities",
-]
+__all__ = ["AbstractOPCUtilities", "DatasetUtilities", "SProcCall", "SystemUtilities"]
 
 from com.inductiveautomation.ignition.common import BasicDataset, Dataset
-from com.inductiveautomation.ignition.common.script.message import (
-    Request,
-    RequestWatcher,
-)
+from com.inductiveautomation.ignition.common.script.message import Request
 from java.lang import Object
 from java.util import Locale
+from org.python.core import PyObject
+
+
+class AbstractOPCUtilities(Object):
+    def browseServer(self, opcServer, nodeId):
+        return [AbstractOPCUtilities.PyOPCTag(opcServer, nodeId, None, self.__class__)]
+
+    def getServers(self):
+        pass
+
+    def getServerState(self, opcServer):
+        pass
+
+    def isServerEnabled(self, serverName):
+        pass
+
+    def readValue(self, opcServer, itemPath):
+        pass
+
+    def readValues(self, opcServer, itemPaths):
+        pass
+
+    def setServerEnabled(self, serverName, enabled):
+        pass
+
+    def writeValue(self, *args, **kwargs):
+        pass
+
+    def writeValues(self, *args, **kwargs):
+        pass
+
+    class PyOPCTag(PyObject):
+        _displayName = None
+        _elementType = None
+        _nodeId = None
+        _serverName = None
+
+        def __init__(self, serverName, nodeId, displayName, elementType):
+            self._serverName = serverName
+            self._nodeId = nodeId
+            self._displayName = displayName
+            self._elementType = elementType
+            super(AbstractOPCUtilities.PyOPCTag, self).__init__()
+
+        def __findattr_ex__(self, name):
+            pass
+
+        def getDisplayName(self):
+            return self._displayName
+
+        def getElementType(self):
+            return self._elementType
+
+        def getNodeId(self):
+            return self._nodeId
+
+        def getServerName(self):
+            return self._serverName
 
 
 class DatasetUtilities(Object):
@@ -336,6 +387,9 @@ class SystemUtilities(Object):
         pass
 
     class RequestImpl(Object, Request):
+        def __init__(self, timeout):
+            self.timeout = timeout
+
         def block(self):
             pass
 

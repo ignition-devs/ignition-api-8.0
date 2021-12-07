@@ -21,15 +21,17 @@ __all__ = [
     "swapWindow",
 ]
 
+from typing import Any, Dict, Optional, Union
+
 from com.inductiveautomation.factorypmi.application import FPMIWindow
-from com.inductiveautomation.factorypmi.application.script.builtin import (
-    INavUtilities,
-    NavUtilities,
-)
+from com.inductiveautomation.factorypmi.application.script.builtin import NavUtilities
 from java.util import EventObject
+
+String = Union[str, unicode]
 
 
 def centerWindow(arg):
+    # type: (Union[String, FPMIWindow]) -> None
     """Given a window path, or a reference to a window itself, it will
     center the window.
 
@@ -37,103 +39,110 @@ def centerWindow(arg):
     be found, this function will do nothing.
 
     Args:
-        arg (object): The path of the window (str) or a reference to the
-            window (FPMIWindow) to center.
+        arg: The path of the window or a reference to the window to
+            center.
     """
     print(arg)
 
 
 def closeParentWindow(event):
+    # type: (EventObject) -> None
     """Closes the parent window given a component event object.
 
     Args:
-        event (EventObject): A component event object. The enclosing
-            window for the component will be closed.
+        event: A component event object. The enclosing window for the
+            component will be closed.
     """
     print(event)
 
 
 def closeWindow(arg):
+    # type: (Union[String, FPMIWindow]) -> None
     """Given a window path, or a reference to a window itself, it will
     close the window.
 
     If the window can't be found, this function will do nothing.
 
     Args:
-        arg (object): A reference to the window to close as an
-            FPMIWindow instance or the path of the window to close as a
-            String.
+        arg: The path of the window or a reference to the window to
+            center.
     """
     print(arg)
 
 
 def desktop(handle="primary"):
+    # type: (Optional[String]) -> NavUtilities
     """Allows for invoking system.nav functions on a specific desktop.
 
     Args:
-        handle (str): The handle for the desktop to use. The screen
-            index casted as a string may be used instead of the handle.
-            If omitted, this will default to the Primary Desktop.
+        handle: The handle for the desktop to use. The screen index
+            casted as a string may be used instead of the handle. If
+            omitted, this will default to the Primary Desktop.
             Alternatively, the handle "primary" can be used to refer to
             the Primary Desktop.
 
     Returns:
-        INavUtilities: A copy of system.nav that will alter the desktop
-            named by the given handle.
+        A copy of system.nav that will alter the desktop named by the
+        given handle.
     """
     print(handle)
     return NavUtilities()
 
 
 def getCurrentWindow():
+    # type: () -> String
     """Returns the path of the current "main screen" window, which is
     defined as the maximized window.
 
-    With the Typical Navigation Strategy, there is only ever one
-    maximized window at a time.
+    With the typical navigation, there is only ever one maximized window
+    at a time.
 
     Returns:
-        str: The path of the current "main screen" window - the
-            maximized window.
+        The path of the current "main screen" window - the maximized
+        window.
     """
     return "Path/To/Maximized Window"
 
 
 def goBack():
-    """When using the Typical Navigation Strategy, this function will
+    # type: () -> FPMIWindow
+    """When using the typical navigation strategy, this function will
     navigate back to the previous main screen window.
 
     Returns:
-        FPMIWindow: The window that was returned to.
+        A reference to window that was navigated to.
     """
     return FPMIWindow("Back")
 
 
 def goForward():
-    """When using the Typical Navigation Strategy, this function will
-    navigate "forward" to the last main-screen window the user was on
+    # type: () -> FPMIWindow
+    """When using the typical navigation strategy, this function will
+    navigate "forward" to the last main screen window the user was on
     when they executed a system.nav.goBack().
 
     Returns:
-        FPMIWindow: The window that was returned to.
+        A reference to window that was navigated to.
     """
     return FPMIWindow("Forward")
 
 
 def goHome():
-    """When using the Typical Navigation Strategy, this function will
+    # type: () -> FPMIWindow
+    """When using the typical navigation strategy, this function will
     navigate to the "home" window.
 
     This is automatically detected as the first main-screen window shown
     in a project.
 
     Returns:
-        FPMIWindow: The window that was returned to.
+        A reference to window that was navigated to.
     """
     return FPMIWindow("Home")
 
 
 def openWindow(path, params=None):
+    # type: (String, Optional[Dict[String, Any]]) -> FPMIWindow
     """Opens the window with the given path.
 
     If the window is already open, brings it to the front. The optional
@@ -141,21 +150,21 @@ def openWindow(path, params=None):
     the target window's root container's dynamic variables.
 
     Args:
-        path (str): The path to the window to open.
-        params (dict): A dictionary of parameters to pass into the
-            window. The keys in the dictionary must match dynamic
-            property names on the target window's root container. The
-            values for each key will be used to set those properties.
-            Optional.
+        path: The path to the window to open.
+        params: A dictionary of parameters to pass into the window. The
+            keys in the dictionary must match dynamic property names on
+            the target window's root container. The values for each key
+            will be used to set those properties. Optional.
 
     Returns:
-        FPMIWindow: A reference to the opened window.
+        A reference to the opened window.
     """
     print(path, params)
     return FPMIWindow("Opened Window")
 
 
 def openWindowInstance(path, params=None):
+    # type: (String, Optional[Dict[String, Any]]) -> FPMIWindow
     """Operates exactly like system.nav.openWindow, except that if the
     named window is already open, then an additional instance of the
     window will be opened.
@@ -164,21 +173,21 @@ def openWindowInstance(path, params=None):
     that you can open.
 
     Args:
-        path (str): The path to the window to open.
-        params (dict): A dictionary of parameters to pass into the
-            window. The keys in the dictionary must match dynamic
-            property names on the target window's root container. The
-            values for each key will be used to set those properties.
-            Optional.
+        path: The path to the window to open.
+        params: A dictionary of parameters to pass into the window. The
+            keys in the dictionary must match dynamic property names on
+            the target window's root container. The values for each key
+            will be used to set those properties. Optional.
 
     Returns:
-        FPMIWindow: A reference to the opened window.
+        A reference to the opened window.
     """
     print(path, params)
     return FPMIWindow("Window Instance")
 
 
 def swapTo(path, params=None):
+    # type: (String, Optional[Dict[String, Any]]) -> FPMIWindow
     """Performs a window swap from the current main screen window to the
     window specified.
 
@@ -189,21 +198,25 @@ def swapTo(path, params=None):
     cannot specify the source for the swap.
 
     Args:
-        path (str): The path to the window to open.
-        params (dict): A dictionary of parameters to pass into the
-            window. The keys in the dictionary must match dynamic
-            property names on the target window's root container. The
-            values for each key will be used to set those properties.
-            Optional.
+        path: The path to the window to open.
+        params: A dictionary of parameters to pass into the window. The
+            keys in the dictionary must match dynamic property names on
+            the target window's root container. The values for each key
+            will be used to set those properties. Optional.
 
     Returns:
-        FPMIWindow: A reference to the swapped-to window.
+        A reference to the swapped-to window.
     """
     print(path, params)
     return FPMIWindow("Swapped To")
 
 
-def swapWindow(arg, swapToPath, params=None):
+def swapWindow(
+    arg,  # type: Union[String, EventObject]
+    swapToPath,  # type: String
+    params=None,  # type: Optional[Dict[String, Any]]
+):
+    # type: (...) -> FPMIWindow
     """Performs a window swap.
 
     This means that one window is closed, and another is opened and
@@ -211,20 +224,22 @@ def swapWindow(arg, swapToPath, params=None):
     maximization state. This gives a seamless transition; one window
     seems to simply turn into another.
 
+    This function works like system.nav.swapTo except that you can
+    specify the source and destination for the swap.
+
     Args:
-        arg (object): The path of the window (str) to swap from. Must be
-            a currently open window, or this will act like an
-            openWindow, or a component event (EventObject) whose
-            enclosing window will be used as the "swap-from" window.
-        swapToPath (str): The name of the window to swap to.
-        params (dict): A dictionary of parameters to pass into the
-            window. The keys in the dictionary must match dynamic
-            property names on the target window's root container. The
-            values for each key will be used to set those properties.
-            Optional.
+        arg: The path of the window to swap from. Must be a currently
+            open window, otherwise this will act like an openWindow, or
+            a component event (EventObject) whose enclosing window will
+            be used as the "swap-from" window.
+        swapToPath: The name of the window to swap to.
+        params: A dictionary of parameters to pass into the window. The
+            keys in the dictionary must match dynamic property names on
+            the target window's root container. The values for each key
+            will be used to set those properties. Optional.
 
     Returns:
-        FPMIWindow: A reference to the swapped-to window.
+        A reference to the swapped-to window.
     """
     print(arg, swapToPath, params)
     return FPMIWindow("Swapped To")

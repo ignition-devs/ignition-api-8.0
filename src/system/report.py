@@ -13,13 +13,22 @@ __all__ = [
     "getReportNamesAsList",
 ]
 
-from com.inductiveautomation.ignition.common import BasicDataset, Dataset
+from typing import Any, Dict, List, Optional, Union
+
+from com.inductiveautomation.ignition.common import BasicDataset
 from java.lang import IllegalArgumentException
+
+String = Union[str, unicode]
 
 
 def executeAndDistribute(
-    path, project="project", parameters=None, action=None, actionSettings=None
+    path,  # type: String
+    project="project",  # type: Optional[String]
+    parameters=None,  # type: Optional[Dict[String, int]]
+    action=None,  # type: Optional[String]
+    actionSettings=None,  # type: Optional[Dict[String, Any]]
 ):
+    # type: (...) -> None
     """Executes and distributes a report. Similar to scheduling a report
     to execute, except a schedule in not required to utilize this
     function.
@@ -28,15 +37,15 @@ def executeAndDistribute(
     client.
 
     Args:
-        path (str): The path to the existing report.
-        project (str): The name of the project where the report is
-            located. Optional in client scope.
-        parameters (dict): An optional dictionary of parameter
-            overrides, in the form name:value.
-        action (str): The name of the distribution action to use.
-        actionSettings (dict): An optional dictionary of settings
-            particular to the action. Missing values will use the
-            default value for that action.
+        path: The path to the existing report.
+        project: The name of the project where the report is located.
+            Optional in client scope.
+        parameters: An optional dictionary of parameter overrides, in
+            the form name:value.
+        action: The name of the distribution action to use.
+        actionSettings: An optional dictionary of settings particular to
+            the action. Missing values will use the default value for
+            that action.
 
     Raises:
         IllegalArgumentException: Thrown when any of the following
@@ -49,21 +58,27 @@ def executeAndDistribute(
     print(path, project, parameters, action, actionSettings)
 
 
-def executeReport(path, project="project", parameters=None, fileType="pdf"):
+def executeReport(
+    path,  # type: String
+    project="project",  # type: Optional[String]
+    parameters=None,  # type: Optional[Dict[String, int]]
+    fileType="pdf",  # type: Optional[String]
+):
+    # type: (...) -> Any
     """Immediately executes an existing report and returns a byte[] of
     the output.
 
     Args:
-        path (str): The path to the existing report.
-        project (str): The name of the project where the report is
-            located. Optional in client scope.
-        parameters (dict): An optional dictionary of parameter
-            overrides, in the form name:value. Optional.
-        fileType (str): The file type the resulting byte array should
+        path: The path to the existing report.
+        project: The name of the project where the report is located.
+            Optional in client scope.
+        parameters: An optional dictionary of parameter overrides, in
+            the form name:value. Optional.
+        fileType: The file type the resulting byte array should
             represent. Defaults to "pdf". Not case-sensitive. Optional.
 
     Returns:
-        object: A byte array of the resulting report.
+        A byte array of the resulting report.
 
     Raises:
         IllegalArgumentException: Thrown when any of the following
@@ -87,18 +102,19 @@ def executeReport(path, project="project", parameters=None, fileType="pdf"):
 
 
 def getReportNamesAsDataset(project="project"):
+    # type: (Optional[String]) -> BasicDataset
     """Gets a data of all reports for a project.
 
     This dataset is particularly suited for display in a Tree View
     component.
 
     Args:
-        project (str): The name of the project where the reports are
-            located. Optional in client scope.
+        project: The name of the project where the reports are located.
+            Optional in client scope.
 
     Returns:
-        Dataset: A dataset of report paths and names for the project.
-            Returns an empty dataset if the project has no reports.
+        A dataset of report paths and names for the project. Returns an
+        empty dataset if the project has no reports.
 
     Raises:
         IllegalArgumentException: Thrown when any of the following
@@ -112,15 +128,16 @@ def getReportNamesAsDataset(project="project"):
 
 
 def getReportNamesAsList(project="project"):
+    # type: (Optional[String]) -> List[String]
     """Gets a list of all reports for a project.
 
     Args:
-        project (str): The name of the project where the reports are
-            located. Optional in client scope.
+        project: The name of the project where the reports are located.
+            Optional in client scope.
 
     Returns:
-        list[str]: A list of report paths for the project. Returns an
-            empty list if the project has no reports.
+        A list of report paths for the project. Returns an empty list if
+        the project has no reports.
 
     Raises:
         IllegalArgumentException: Thrown when any of the following

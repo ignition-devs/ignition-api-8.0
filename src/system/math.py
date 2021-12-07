@@ -27,36 +27,39 @@ __all__ = [
     "variance",
 ]
 
-try:
-    import __builtin__ as builtins
-except ImportError:
-    import builtins
+import __builtin__ as builtins
+
+from typing import List, Union
+
+from org.apache.commons.math3.exception import DimensionMismatchException
 
 
 def geometricMean(values):
+    # type: (List[Union[float, int]]) -> float
     """Calculates the geometric mean.
 
     Geometric Mean is a type of average which indicates a typical value
     in a set of numbers by using the product of values in the set.
 
-    Returns NaN (Not A Number) if passed an empty sequence.
+    Returns NaN (Not a Number) if passed an empty sequence.
 
     Args:
-        values (list[float]): A Sequence of numerical values. Accepts
-            both Integers and Floats. The sequence may not contain None
-            type values. However, passing a None type object instead of
-            a Sequence of numerical values will return nan.
+        values: A Sequence of numerical values. Accepts both Integers
+            and Floats. The sequence may not contain None type values.
+            However, passing a None type object instead of a Sequence of
+            numerical values will return NaN.
 
     Returns:
-        float: The geometric mean, or nan if the input was empty or
-            null. Because this uses logs to compute the geometric mean,
-            will return nan if any entries are negative.
+        The geometric mean, or NaN if the input was empty or null.
+        Because this uses logs to compute the geometric mean, will
+        return NaN if any entries are negative.
     """
     print(values)
     return float(43)
 
 
 def kurtosis(values):
+    # type: (List[Union[float, int]]) -> float
     """Calculates the kurtosis of a sequence of values.
 
     Kurtosis measures if data is peaked or flat relative to normal
@@ -70,60 +73,62 @@ def kurtosis(values):
     distribution.
 
     Args:
-        values (list[float]): A Sequence of numerical values. Accepts
-            both Integers and Floats. The sequence may not contain None
-            type values. However, passing a None type object instead of
-            a Sequence of numerical values will return nan.
+        values: A sequence of numerical values. Accepts both Integers
+            and Floats. The sequence may not contain None type values.
+            However, passing a None type object instead of a Sequence of
+            numerical values will return NaN.
 
     Returns:
-        float: The kurtosis, or nan if the input was empty or null.
-            Additionally, returns nan if the values returned fewer than
-            4 values.
+        The kurtosis, or NaN if the input was empty or null.
+        Additionally, returns NaN if the values returned fewer than 4
+        values.
     """
     print(values)
+    return float(43)
 
 
 def max(values):
+    # type: (List[Union[float, int]]) -> float
     """Given a sequence of values, returns the greatest value in the
     sequence, also known as the "max" value.
 
-    Returns NaN (Not A Number) if passed an empty sequence.
+    Returns NaN (Not a Number) if passed an empty sequence.
 
     Args:
-        values (list[float]): A Sequence of numerical values. Accepts
-            both Integers and Floats. The sequence may not contain None
-            type values. However, passing a None type object instead of
-            a Sequence of numerical values will return nan.
+        values: A Sequence of numerical values. Accepts both Integers
+            and Floats. The sequence may not contain None type values.
+            However, passing a None type object instead of a Sequence of
+            numerical values will return NaN.
 
     Returns:
-        float: The maximum value contained in the 'values' parameter, or
-            nan if the input was empty or null.
+        The maximum value contained in the values parameter, or NaN if
+        the input was empty or null.
     """
     return builtins.max(values)
 
 
 def mean(values):
+    # type: (List[Union[float, int]]) -> float
     """Given a sequence of values, calculates the arithmetic mean
     (average).
 
-    Returns NaN (Not A Number) if passed an empty sequence, a null.
-
-    Returns NaN (Not A Number) if passed an empty sequence.
+    Returns NaN (Not a Number) if passed an empty sequence, a null.
 
     Args:
-        values (list[float]): A Sequence of numerical values. Accepts
-            both Integers and Floats. The sequence may not contain None
-            type values. However, passing a None type object instead of
-            a Sequence of numerical values will return nan.
+        values: A Sequence of numerical values. Accepts both Integers
+            and Floats. The sequence may not contain None type values.
+            However, passing a None type object instead of a Sequence of
+            numerical values will return NaN.
 
     Returns:
-        float: The maximum value contained in the 'values' parameter, or
-            nan if the input was empty or null.
+        The arithmetic mean, or NaN if the input was empty or None.
     """
     print(values)
+    return float(43)
 
 
 def meanDifference(values1, values2):
+    # type: (List[Union[float, int]], List[Union[float, int]]) -> float
     """Given two sequences of values, calculates the mean of the signed
     difference between both sequences.
 
@@ -131,85 +136,92 @@ def meanDifference(values1, values2):
     values of two different sets of data.
 
     Args:
-        values1 (list[float]): A Sequence of numerical values. Accepts
-            both Integers and Floats. The sequence may not contain None
-            type values. However, passing a None type object instead of
-            a Sequence of numerical values will return nan.
-        values2 (list[float]): A Sequence of numerical values. Accepts
-            both Integers and Floats. The sequence may not contain None
-            type values. However, passing a None type object instead of
-            a Sequence of numerical values will return nan.
+        values1: A Sequence of numerical values. Accepts both Integers
+            and Floats. The sequence may not contain None type values.
+            However, passing a None type object instead of a Sequence of
+            numerical values will return NaN.
+        values2: A Sequence of numerical values. Accepts both Integers
+            and Floats. The sequence may not contain None type values.
+            However, passing a None type object instead of a Sequence of
+            numerical values will return NaN.
 
     Returns:
-        float: The mean difference, or nan if one of the parameters was
-            empty or null.
+        The mean difference, or NaN if one of the parameters was empty
+        or null.
 
     Raises:
         DimensionMismatchException: If the two sequences have different
             lengths.
     """
-    print(values1, values2)
+    if len(values1) != len(values2):
+        raise DimensionMismatchException()
+    return float(43)
 
 
 def median(values):
+    # type: (List[Union[float, int]]) -> float
     """Takes a sequence of values, and returns the median.
 
     The Median represents the middle value in a set of data.
 
-    Returns NaN (Not A Number) if passed an empty sequence.
+    Returns NaN (Not a Number) if passed an empty sequence.
 
     Args:
-        values (list[float]): A Sequence of numerical values. Accepts
-            both Integers and Floats. The sequence may not contain None
-            type values. However, passing a None type object instead of
-            a Sequence of numerical values will return nan.
+        values: A Sequence of numerical values. Accepts both Integers
+            and Floats. The sequence may not contain None type values.
+            However, passing a None type object instead of a Sequence of
+            numerical values will return NaN.
 
     Returns:
-        float: The median, or nan if the input was empty or null.
+        The median, or NaN if the input was empty or null.
     """
     print(values)
+    return float(43)
 
 
 def min(values):
+    # type: (List[Union[float, int]]) -> float
     """Given a Sequence of numerical values, returns the minimum value,
     also known as the "min" value.
 
-    Returns NaN (Not A Number) if passed an empty sequence.
+    Returns NaN (Not a Number) if passed an empty sequence.
 
     Args:
-        values (list[float]): A Sequence of numerical values. Accepts
-            both Integers and Floats. The sequence may not contain None
-            type values. However, passing a None type object instead of
-            a Sequence of numerical values will return nan.
+        values: A Sequence of numerical values. Accepts both Integers
+            and Floats. The sequence may not contain None type values.
+            However, passing a None type object instead of a Sequence of
+            numerical values will return NaN.
 
     Returns:
-        float: The minimum value contained within the 'values'
-            parameter, or nan if the input was empty or null.
+        The minimum value contained within the values parameter, or NaN
+        if the input was empty or null.
     """
     return builtins.min(values)
 
 
 def mode(values):
+    # type: (List[Union[float, int]]) -> List[float]
     """Given a sequence of values, returns the 'mode', or most frequent
     values.
 
     Returns an empty list if the sequence was empty or None.
 
     Args:
-        values (list[float]): A Sequence of numerical values. Accepts
-            both Integers and Floats. The sequence may not contain None
-            type values.
+        values: A Sequence of numerical values. Accepts both Integers
+            and Floats. The sequence may not contain None type values.
 
     Returns:
-        list[float]: A Java Array (functionally similar to a Python
-            List) of floats representing the most frequent values in the
-            'values' parameter. If the values parameter was empty, then
-            an empty list will be returned instead.
+        A Java Array (functionally similar to a Python List) of floats
+        representing the most frequent values in the values parameter.
+        If the values parameter was empty, then an empty list will be
+        returned instead.
     """
     print(values)
+    return [float(43)]
 
 
 def normalize(values):
+    # type: (List[Union[float, int]]) -> List[float]
     """Given a sequence of values, normalizes the values.
 
     Normalizing data refers to adjusting values measured on different
@@ -221,21 +233,22 @@ def normalize(values):
     Returns an empty list if the sequence was empty or None.
 
     Args:
-        values (list[float]): A Sequence of numerical values. Accepts
-            both Integers and Floats. The sequence may not contain None
-            type values.
+        values: A Sequence of numerical values. Accepts both Integers
+            and Floats. The sequence may not contain None type values.
 
     Returns:
-        list[float]: A Java Array (functionally similar to a Python
-            List) of floats representing normalized input, with a mean
-            of 0 and a standard deviation of 1. Returns an empty array
-            if the input was empty or None. If the standard deviation is
-            0, will return an array of float nan (Not a Number).
+        A Java Array (functionally similar to a Python List) of floats
+        representing normalized input, with a mean of 0 and a standard
+        deviation of 1. Returns an empty array if the input was empty or
+        None. If the standard deviation is 0, will return an array of
+        float NaN (Not a Number).
     """
     print(values)
+    return [float(43)]
 
 
 def percentile(values, percentile):
+    # type: (List[Union[float, int]], float) -> float
     """Given a sequence of numerical values, estimates the percentile of
     input.
 
@@ -245,63 +258,70 @@ def percentile(values, percentile):
     data points may be found.
 
     Args:
-        values (list[float]): A Sequence of numerical values. Accepts
-            both Integers and Floats. The sequence may not contain None
-            type values. However, passing a None type object instead of
-            a Sequence of numerical values will return nan.
-        percentile (float): The percentile to compute. A float greater
-            than 0 and less than or equal to 100. Will throw an
-            exception if the percentile is out of bounds.
+        values: A Sequence of numerical values. Accepts both Integers
+            and Floats. The sequence may not contain None type values.
+            However, passing a None type object instead of a Sequence of
+            numerical values will return NaN.
+        percentile: The percentile to compute. A float greater than 0
+            and less than or equal to 100. Will throw an exception if
+            the percentile is out of bounds.
 
     Returns:
-        float: An estimate of the requested percentile of the input, or
-            nan if the input was empty or null.
+        An estimate of the requested percentile of the input, or NaN if
+        the input was empty or null.
     """
     print(values, percentile)
+    if 0 > percentile > 100:
+        raise ValueError("percentile out of bounds.")
+    return float(43)
 
 
 def populationVariance(values):
+    # type: (List[Union[float, int]]) -> float
     """Given a sequence of values, returns the Population Variance.
 
     Population variance calculates how values in a dataset are spread
     out from their average value.
 
-    Returns NaN (Not A Number) if passed an empty sequence.
+    Returns NaN (Not a Number) if passed an empty sequence.
 
     Args:
-        values (list[float]): A Sequence of numerical values. Accepts
-            both Integers and Floats. The sequence may not contain None
-            type values. However, passing a None type object instead of
-            a Sequence of numerical values will return nan.
+        values: A Sequence of numerical values. Accepts both Integers
+            and Floats. The sequence may not contain None type values.
+            However, passing a None type object instead of a Sequence of
+            numerical values will return NaN.
 
     Returns:
-        float: The population variance, or nan if the input was empty or
-            null.
+        The population variance, or NaN if the input was empty or null.
     """
     print(values)
+    return float(43)
 
 
 def product(values):
+    # type: (List[Union[float, int]]) -> float
     """Given a sequence of values, calculates the product of the
     sequence: the result of multiplying of all values in the sequence
     together.
 
-    Returns NaN (Not A Number) if passed an empty sequence.
+    Returns NaN (Not a Number) if passed an empty sequence.
 
     Args:
-        values (list[float]): A Sequence of numerical values. Accepts
-            both Integers and Floats. The sequence may not contain None
-            type values. However, passing a None type object instead of
-            a Sequence of numerical values will return nan.
+        values: A Sequence of numerical values. Accepts both Integers
+            and Floats. The sequence may not contain None type values.
+            However, passing a None type object instead of a Sequence of
+            numerical values will return NaN.
 
     Returns:
-        float: The product of all values in the 'values' parameter, or
-            nan if the input was empty or null.
+        The product of all values in the values parameter, or NaN if the
+        input was empty or null.
     """
     print(values)
+    return float(43)
 
 
 def skewness(values):
+    # type: (List[Union[float, int]]) -> float
     """Calculates the skewness given a sequence of values.
 
     Skewness is a measure of the degree of asymmetry of a distribution
@@ -309,148 +329,160 @@ def skewness(values):
     in the negative direction. If skewed to the right, the tail will be
     skewed in the positive direction.
 
-    Returns NaN (Not A Number) if passed an empty sequence.
+    Returns NaN (Not a Number) if passed an empty sequence.
 
     Args:
-        values (list[float]): A Sequence of numerical values. Accepts
-            both Integers and Floats. The sequence may not contain None
-            type values. However, passing a None type object instead of
-            a Sequence of numerical values will return nan.
+        values: A Sequence of numerical values. Accepts both Integers
+            and Floats. The sequence may not contain None type values.
+            However, passing a None type object instead of a Sequence of
+            numerical values will return NaN.
 
     Returns:
-        float: The skewness of the 'values' parameter, or nan if values
-            was empty or null.
+        The skewness of the values parameter, or NaN if values was empty
+        or null.
     """
     print(values)
+    return float(43)
 
 
 def standardDeviation(values):
+    # type: (List[Union[float, int]]) -> float
     """Given a Sequence of numerical values, calculates the standard
     deviation.
 
     Standard deviation is a calculated number for how close, or how far
     the values of that dataset are in relation to the mean.
 
-    Returns NaN (Not A Number) if passed an empty sequence.
+    Returns NaN (Not a Number) if passed an empty sequence.
 
     Args:
-        values (list[float]): A Sequence of numerical values. Accepts
-            both Integers and Floats. The sequence may not contain None
-            type values. However, passing a None type object instead of
-            a Sequence of numerical values will return nan.
+        values: A Sequence of numerical values. Accepts both Integers
+            and Floats. The sequence may not contain None type values.
+            However, passing a None type object instead of a Sequence of
+            numerical values will return NaN.
 
     Returns:
-        float: The standard deviation of the 'values' parameter, or nan
-            if the values was empty or null.
+        The standard deviation of the values parameter, or NaN if the
+        values was empty or null.
     """
     print(values)
+    return float(43)
 
 
 def sum(values):
+    # type: (List[Union[float, int]]) -> float
     """Given a sequence of values, calculates the sum of all values.
 
     The sum is the number returned by addition.
 
-    Returns NaN (Not A Number) if passed an empty sequence.
+    Returns NaN (Not a Number) if passed an empty sequence.
 
     Args:
-        values (list[float]): A Sequence of numerical values. Accepts
-            both Integers and Floats. The sequence may not contain None
-            type values. However, passing a None type object instead of
-            a Sequence of numerical values will return nan.
+        values: A Sequence of numerical values. Accepts both Integers
+            and Floats. The sequence may not contain None type values.
+            However, passing a None type object instead of a Sequence of
+            numerical values will return NaN.
 
     Returns:
-        float: The sum of all values in the 'values' parameter, or nan
-            if values was empty or null.
+        The sum of all values in the values parameter, or NaN if values
+        was empty or null.
     """
     return builtins.sum(values)
 
 
 def sumDifference(values1, values2):
+    # type: (List[Union[float, int]], List[Union[float, int]]) -> float
     """Given two sequences of values, calculates the sum of the signed
     difference between both sequences.
 
     In other words, the sum and difference between two sets of numbers.
 
     Args:
-        values1 (list[float]): A Sequence of numerical values. Accepts
-            both Integers and Floats. The sequence may not contain None
-            type values. However, passing a None type object instead of
-            a Sequence of numerical values will return nan.
-        values2 (list[float]): A Sequence of numerical values. Accepts
-            both Integers and Floats. The sequence may not contain None
-            type values. However, passing a None type object instead of
-            a Sequence of numerical values will return nan.
+        values1: A Sequence of numerical values. Accepts both Integers
+            and Floats. The sequence may not contain None type values.
+            However, passing a None type object instead of a Sequence of
+            numerical values will return NaN.
+        values2: A Sequence of numerical values. Accepts both Integers
+            and Floats. The sequence may not contain None type values.
+            However, passing a None type object instead of a Sequence of
+            numerical values will return NaN.
 
     Returns:
-        float: The sum difference, or nan if one of the parameters was
-            empty or null.
+        The sum difference, or NaN if one of the parameters was empty or
+        null.
 
     Raises:
         DimensionMismatchException: If the two sequences have different
             lengths.
     """
-    print(values1, values2)
+    if len(values1) != len(values2):
+        raise DimensionMismatchException()
+    return float(43)
 
 
 def sumLog(values):
+    # type: (List[Union[float, int]]) -> float
     """Given a sequence of values, calculates the sum of the natural
     logs.
 
-    Returns NaN (Not A Number) if passed an empty sequence.
+    Returns NaN (Not a Number) if passed an empty sequence.
 
     Args:
-        values (list[float]): A Sequence of numerical values. Accepts
-            both Integers and Floats. The sequence may not contain None
-            type values. However, passing a None type object instead of
-            a Sequence of numerical values will return nan.
+        values: A Sequence of numerical values. Accepts both Integers
+            and Floats. The sequence may not contain None type values.
+            However, passing a None type object instead of a Sequence of
+            numerical values will return NaN.
 
     Returns:
-        float: The sum of the natural logs of the input values, or nan
-            if the input was empty, None, or contains negative numbers.
+        The sum of the natural logs of the input values, or NaN if the
+        input was empty, None, or contains negative numbers.
     """
     print(values)
+    return float(43)
 
 
 def sumSquares(values):
+    # type: (List[Union[float, int]]) -> float
     """Given a sequence of values, calculates the sum of the squares of
     all values.
 
     Sum squares measures how far individual values are from the mean by
     calculating how much variation there is in a set of values.
 
-    Returns NaN (Not A Number) if passed an empty sequence.
+    Returns NaN (Not a Number) if passed an empty sequence.
 
     Args:
-        values (list[float]): A Sequence of numerical values. Accepts
-            both Integers and Floats. The sequence may not contain None
-            type values. However, passing a None type object instead of
-            a Sequence of numerical values will return nan.
+        values: A Sequence of numerical values. Accepts both Integers
+            and Floats. The sequence may not contain None type values.
+            However, passing a None type object instead of a Sequence of
+            numerical values will return NaN.
 
     Returns:
-        float: The sum of all squares of the 'values' parameter, or nan
-            if the input was empty or null.
+        The sum of all squares of the values parameter, or NaN if the
+        input was empty or null.
     """
     return builtins.sum(value ** 2 for value in values)
 
 
 def variance(values):
+    # type: (List[Union[float, int]]) -> float
     """Given a sequence of values, calculates the variance of all
     values.
 
     Variance measures how far values in a set are spread out from their
     mean value.
 
-    Returns NaN (Not A Number) if passed an empty sequence.
+    Returns NaN (Not a Number) if passed an empty sequence.
 
     Args:
-        values (list[float]): A Sequence of numerical values. Accepts
-            both Integers and Floats. The sequence may not contain None
-            type values. However, passing a None type object instead of
-            a Sequence of numerical values will return nan.
+        values: A Sequence of numerical values. Accepts both Integers
+            and Floats. The sequence may not contain None type values.
+            However, passing a None type object instead of a Sequence of
+            numerical values will return NaN.
 
     Returns:
-        float: The sum of all values in the 'values' parameter, or nan
-            if the input was empty or null.
+        The variance of all values in the values parameter, or NaN if
+        the input was empty or null.
     """
     print(values)
+    return float(43)
