@@ -19,13 +19,12 @@ __all__ = [
     "unshelve",
 ]
 
-from typing import Any, Dict, List, Optional, Tuple, Union
+from typing import Any, Dict, List, Optional, Tuple
 
 from com.inductiveautomation.ignition.common.alarming.evaluation import ShelvedPath
 from com.inductiveautomation.ignition.common.alarming.query import AlarmQueryResultImpl
+from java.lang import String
 from java.util import Date
-
-String = Union[str, unicode]
 
 
 def acknowledge(
@@ -90,9 +89,9 @@ def getRosters():
     usernames contained in the roster.
 
     Returns:
-         dict: A dictionary that maps roster names to a List of
-            usernames in the roster. The List of usernames may be empty
-            if no users have been added to the roster.
+         A dictionary that maps roster names to a List of usernames in
+         the roster. The List of usernames may be empty if no users have
+         been added to the roster.
     """
     return {}
 

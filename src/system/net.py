@@ -21,11 +21,10 @@ __all__ = [
 
 import socket
 
-from typing import Any, Callable, Dict, List, Optional, Union
+from typing import Any, Callable, Dict, List, Optional
 
 from com.inductiveautomation.ignition.common.script.builtin.http import JythonHttpClient
-
-String = Union[str, unicode]
+from java.lang import String
 
 
 def getExternalIpAddress():
@@ -308,7 +307,7 @@ def httpPut(url, *args, **kwargs):
         **kwargs: Arbitrary keyword arguments.
 
     Returns:
-        str: The content returned by the PUT operation.
+        The content returned by the PUT operation.
     """
     print(url, args, kwargs)
     return ""

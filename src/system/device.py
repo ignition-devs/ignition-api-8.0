@@ -15,11 +15,10 @@ __all__ = [
     "setDeviceHostname",
 ]
 
-from typing import Any, Dict, Union
+from typing import Any, Dict
 
 from com.inductiveautomation.ignition.common import BasicDataset
-
-String = Union[str, unicode]
+from java.lang import String
 
 
 def addDevice(
