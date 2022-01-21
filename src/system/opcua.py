@@ -8,9 +8,9 @@ from __future__ import print_function
 
 __all__ = ["callMethod"]
 
-from typing import Any, List, Tuple
+from typing import Any, List, Tuple, Union
 
-from java.lang import String
+String = Union[str, unicode]
 
 
 def callMethod(
