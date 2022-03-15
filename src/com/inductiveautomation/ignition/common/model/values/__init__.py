@@ -1,4 +1,4 @@
-__all__ = ["BasicQualifiedValue", "QualityCode", "QualifiedValue"]
+__all__ = ["BasicQualifiedValue", "QualifiedValue", "QualityCode"]
 
 
 from java.lang import Object
