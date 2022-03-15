@@ -33,13 +33,8 @@ class Version(Object):
         version_2 = [other.major, other.minor, other.rev]
 
         if strict:
-            version_1.append(self.build)
-            version_1.append(self.beta)
-            version_1.append(self.rc)
-            version_2.append(other.build)
-            version_2.append(other.beta)
-            version_2.append(other.rc)
-
+            version_1.extend((self.build, self.beta, self.rc))
+            version_2.extend((other.build, other.beta, other.rc))
         for i in range(max(len(version_1), len(version_2))):
             v_1 = version_1[i] if i < len(version_1) else 0
             v_2 = version_2[i] if i < len(version_2) else 0
@@ -75,11 +70,11 @@ class Version(Object):
         pass
 
     def getBasicString(self):
-        if self.rc > 0:
-            ret = "{}.{}.{}-rc{}".format(self.major, self.minor, self.rev, self.rc)
-        else:
-            ret = "{}.{}.{}".format(self.major, self.minor, self.rev)
-        return ret
+        return (
+            "{}.{}.{}-rc{}".format(self.major, self.minor, self.rev, self.rc)
+            if self.rc > 0
+            else "{}.{}.{}".format(self.major, self.minor, self.rev)
+        )
 
     def getBeta(self):
         return self.beta
@@ -128,17 +123,14 @@ class Version(Object):
 
     def toString(self):
         if self.rc > 0:
-            version = "{}.{}.{}-rc{} (b{})".format(
+            return "{}.{}.{}-rc{} (b{})".format(
                 self.major, self.minor, self.rev, self.rc, self.build
             )
-        elif self.isSnapshot():
-            version = "{}.{}.{}-SNAPSHOT (b{})".format(
+        if self.isSnapshot():
+            return "{}.{}.{}-SNAPSHOT (b{})".format(
                 self.major, self.minor, self.rev, self.build
             )
-        elif self.build is not None:
-            version = "{}.{}.{} (b{})".format(
-                self.major, self.minor, self.rev, self.build
-            )
-        else:
-            version = "{}.{}.{}".format(self.major, self.minor, self.rev)
-        return version
+        if self.build is not None:
+            return "{}.{}.{} (b{})".format(self.major, self.minor, self.rev, self.build)
+
+        return "{}.{}.{}".format(self.major, self.minor, self.rev)
