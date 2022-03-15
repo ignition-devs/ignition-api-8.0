@@ -203,7 +203,7 @@ def dataSetToHTML(
         The HTML page as a string.
     """
     print(showHeaders, dataset, title)
-    return "<html><head>{}</head><body>data</body></html>".format(title)
+    return f"<html><head>{title}</head><body>data</body></html>"
 
 
 def deleteRow(dataset, rowIndex):
