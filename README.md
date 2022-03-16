@@ -1,4 +1,4 @@
-# Ignition
+# ignition-api 8.0
 
 <!--- Badges --->
 ![GitHub last commit (8.0)](https://img.shields.io/github/last-commit/ignition-api/8.0/main)
