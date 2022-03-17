@@ -91,7 +91,7 @@ To include ignition-api as a dependency in PyCharm, you will need to attach it t
 
 ### Packages
 
-Ignition consists of the following packages:
+This project consists of the following packages:
 
 - com.inductiveautomation
 - java
@@ -121,7 +121,7 @@ This package includes all Ignition Scripting Functions. For more information, se
 
 ### Contributing
 
-To contribute to Ignition, follow these steps:
+To contribute to this project, follow these steps:
 
 1. Fork this repository
 2. Create a local copy on your machine
