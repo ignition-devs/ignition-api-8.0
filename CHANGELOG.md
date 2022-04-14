@@ -2,6 +2,52 @@
 
 All notable changes to this project will be documented in this file.
 
+## [8.0.17.post6] - 2022-04-14
+
+### Bug Fixes
+
+- update type hint for `html` arg (#17) ([7012e4f](https://github.com/ignition-api/8.0/commit/7012e4fe0feb0e2fb499a9f29b6913d443ef86d5))
+
+### CI
+
+- fix packaging issues (#2) ([f1359c7](https://github.com/ignition-api/8.0/commit/f1359c724d8f62c2662acc4616e6d14c74b3fab5))
+- update build action (#4) ([d3dff81](https://github.com/ignition-api/8.0/commit/d3dff812debbf4f2073ece1e6829134e9076b02f))
+- add dependabot (#6) ([2317873](https://github.com/ignition-api/8.0/commit/2317873384e11fa7830c713fdf478b2bae553fd0))
+- use `deps` scope for pre-commit.ci (#9) ([e0e6d54](https://github.com/ignition-api/8.0/commit/e0e6d5449eebb57b06f7f2da83a39c6d5edd176e))
+
+### Documentation
+
+- update downloads badge ([a999278](https://github.com/ignition-api/8.0/commit/a999278eaf5cc9ac8afcde8de4d89177920ce637))
+- update project title (#3) ([61891b1](https://github.com/ignition-api/8.0/commit/61891b1d8cc46c1f53604e88edc268522aa85d70))
+- replace old project name (#5) ([a9c6967](https://github.com/ignition-api/8.0/commit/a9c6967f8224de4a8ec6e6a03ea8f61e85ab111f))
+- use pepy.tech for counting downloads (#12) ([1aeb699](https://github.com/ignition-api/8.0/commit/1aeb69993490b20ff6800c40ebd3a40fd9b40e29))
+- add link to org CONTRIBUTING.md (#13) ([d559e6c](https://github.com/ignition-api/8.0/commit/d559e6ccb7b1155fa61de04219d746d642898862))
+
+### Miscellaneous Tasks
+
+- cleanup `.pylintrc` ([111e5bd](https://github.com/ignition-api/8.0/commit/111e5bd90478a17f7c5c72637bfb62e71437c7b4))
+- move project to github org ([d947b00](https://github.com/ignition-api/8.0/commit/d947b00d9b7db209d28599fe49839169735b9711))
+
+### Refactor
+
+- Sourcery refactored main branch (#1) ([339de11](https://github.com/ignition-api/8.0/commit/339de11cfee09666adadd81d351d3eb83e70c8c5))
+- improve Version comparison logic (#10) ([0fdb0e4](https://github.com/ignition-api/8.0/commit/0fdb0e48669bbebe7652545c9697f051415ec128))
+
+### Styling
+
+- format `pyproject.toml` with `pyproject-fmt` ([c5a65c7](https://github.com/ignition-api/8.0/commit/c5a65c7ecd634297a5e8b44282db1688eb83acd5))
+- sort `__all__` ([414b74b](https://github.com/ignition-api/8.0/commit/414b74b1f398b7ec659dfb757e8328b34bc4701c))
+
+### Build
+
+- update black from 21.12b0 to 22.1.0 ([23c517d](https://github.com/ignition-api/8.0/commit/23c517dea2eb5913d276e2a1f7591e39d9ee4f4a))
+- add `sort-all@v1.2.0` ([071969e](https://github.com/ignition-api/8.0/commit/071969e5033231d5c9b374864b5192111d5c1963))
+- bump actions/setup-python from 2 to 3 (#7) ([98b2d9a](https://github.com/ignition-api/8.0/commit/98b2d9af2bc3227d64a909017410162c01e7ab2b))
+- bump actions/checkout from 2 to 3 (#8) ([6689190](https://github.com/ignition-api/8.0/commit/6689190606b119e606d6ca37ca7c9112966b3236))
+- bump .pylintrc from 2.12.2 to 2.13.2 (#11) ([e9b002b](https://github.com/ignition-api/8.0/commit/e9b002b4357175f2298128849c896384232fd7cb))
+- pre-commit autoupdate (#14) ([ef4bd83](https://github.com/ignition-api/8.0/commit/ef4bd8385414a7caaabdd7511db17e12a0924f33))
+- update pylint configuration (#15) ([74de37d](https://github.com/ignition-api/8.0/commit/74de37dc9017db88d383f46dfecff9de7c952176))
+
 ## [8.0.17.post5] - 2022-01-21
 
 ### Features
